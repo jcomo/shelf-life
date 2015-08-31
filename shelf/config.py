@@ -1,4 +1,5 @@
 import os
+import logging
 
 
 def running_in(environment):
@@ -23,6 +24,11 @@ class Environment(object):
 
 class Configuration(object):
     DEBUG = False
+
+    LOG_LEVEL = os.environ.get('LOG_LEVEL', logging.DEBUG)
+    LOG_FILE_NAME = os.environ.get('LOG_FILE_NAME', 'error.log')
+    LOG_FILE_SIZE = os.environ.get('LOG_FILE_SIZE', 1024 ** 2)
+    LOG_BACKUP_COUNT = os.environ.get('LOG_BACKUP_COUNT', 5)
 
     SERVER_NAME = os.environ.get('SERVER_NAME')
     SERVICE_ENVIRONMENT = Environment.read()
