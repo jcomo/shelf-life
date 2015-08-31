@@ -1,14 +1,19 @@
 from flask import Flask, request, jsonify
 from requests import Session
 
-from shelf.client import StillTastyClient
+from shelf.config import Configuration, Environment, running_in
+from shelf.client import StillTastyHTTPClient, StillTastyFixtureClient
 from shelf.models import StillTastyJSONEncoder
 from shelf.exceptions import ShelfLifeException
 
-client = StillTastyClient()
-
 app = Flask('shelf-life')
+app.config.from_object(Configuration)
 app.json_encoder = StillTastyJSONEncoder
+
+if running_in(Environment.TEST):
+    client = StillTastyFixtureClient('fixtures')
+else:
+    client = StillTastyHTTPClient()
 
 
 @app.route('/search')

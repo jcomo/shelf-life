@@ -1,3 +1,5 @@
+import os
+
 from bs4 import BeautifulSoup
 from requests import Session
 
@@ -36,20 +38,55 @@ def parse_item_results(html):
 
 
 class StillTastyClient(object):
-    def __init__(self, base_url=None):
-        self.base_url = base_url or 'http://stilltasty.com'
-        self.session = Session()
+
+    def fetch_search_page(self, query):
+        raise NotImplemented
+
+    def fetch_item_page(self, item_id):
+        raise NotImplemented
 
     def search(self, query):
-        url = '{}/searchitems/search/{}'.format(self.base_url, query)
-        response = self.session.get(url)
-        return parse_search_results(response.text)
+        search_page = self.fetch_search_page(query)
+        return parse_search_results(search_page)
 
     def item_life(self, item_id):
-        url = '{}/fooditems/index/{}'.format(self.base_url, item_id)
-        response = self.session.get(url)
-        results = parse_item_results(response.text)
+        item_page = self.fetch_item_page(item_id)
+        results = parse_item_results(item_page)
         if not results:
             raise ItemNotFound('No item found for id: {}'.format(item_id))
 
         return results
+
+
+class StillTastyHTTPClient(StillTastyClient):
+    def __init__(self, base_url=None):
+        self.base_url = base_url or 'http://stilltasty.com'
+        self.session = Session()
+
+    def fetch_search_page(self, query):
+        url = '{}/searchitems/search/{}'.format(self.base_url, query)
+        return self._fetch_page(url)
+
+    def fetch_item_page(self, item_id):
+        url = '{}/fooditems/index/{}'.format(self.base_url, item_id)
+        return self._fetch_page(url)
+
+    def _fetch_page(self, url):
+        response = self.session.get(url)
+        return response.text
+
+
+class StillTastyFixtureClient(StillTastyClient):
+    def __init__(self, fixture_path):
+        self.fixture_path = fixture_path
+
+    def fetch_search_page(self, query):
+        return self._open_page('search.html')
+
+    def fetch_item_page(self, item_id):
+        return self._open_page('results.html')
+
+    def _open_page(self, page_file):
+        page_path = os.path.join(self.fixture_path, page_file)
+        with open(page_path) as f:
+            return f.read().decode('ascii', errors='ignore')
