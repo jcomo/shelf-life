@@ -45,6 +45,9 @@ class FoodItemGuide(object):
         self.methods = methods
         self.tips = tips
 
+    def __nonzero__(self):
+        return bool(self.methods)
+
 
 class StillTastyJSONEncoder(JSONEncoder):
     def default(self, obj):
