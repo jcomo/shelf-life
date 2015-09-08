@@ -58,6 +58,22 @@ class StillTastyClient(object):
         return results
 
 
+class StillTastyFixtureClient(StillTastyClient):
+    def __init__(self, fixture_path):
+        self.fixture_path = fixture_path
+
+    def fetch_search_page(self, query):
+        return self._open_page('search.html')
+
+    def fetch_item_page(self, item_id):
+        return self._open_page('results.html')
+
+    def _open_page(self, page_file):
+        page_path = os.path.join(self.fixture_path, page_file)
+        with open(page_path) as f:
+            return f.read().decode('ascii', errors='ignore')
+
+
 class StillTastyHTTPClient(StillTastyClient):
     def __init__(self, base_url=None):
         self.base_url = base_url or 'http://stilltasty.com'
@@ -74,19 +90,3 @@ class StillTastyHTTPClient(StillTastyClient):
     def _fetch_page(self, url):
         response = self.session.get(url)
         return response.text
-
-
-class StillTastyFixtureClient(StillTastyClient):
-    def __init__(self, fixture_path):
-        self.fixture_path = fixture_path
-
-    def fetch_search_page(self, query):
-        return self._open_page('search.html')
-
-    def fetch_item_page(self, item_id):
-        return self._open_page('results.html')
-
-    def _open_page(self, page_file):
-        page_path = os.path.join(self.fixture_path, page_file)
-        with open(page_path) as f:
-            return f.read().decode('ascii', errors='ignore')

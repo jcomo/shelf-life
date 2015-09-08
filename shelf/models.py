@@ -1,14 +1,22 @@
 import re
 
+from inflection import titleize
+
 from flask import url_for
 from flask.json import JSONEncoder
 
 
 class ItemSearchResult(object):
+    _NAME_SPACE_PATTERN = re.compile('\s\s+')
+
     def __init__(self, name, url):
-        self.name = name
+        self.name = self._clean_item_name(name)
         self.url = url
         self.item_id = self._pluck_item_id(url)
+
+    def _clean_item_name(self, name):
+        space_squashed_name = re.sub(self._NAME_SPACE_PATTERN, ' ', name)
+        return titleize(space_squashed_name)
 
     @staticmethod
     def _pluck_item_id(url):
