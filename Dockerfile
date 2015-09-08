@@ -3,6 +3,8 @@ FROM python:2.7
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
+ENV PYTHONPATH /app
+
 COPY . /app
 WORKDIR /app
 

@@ -20,4 +20,3 @@ def file_handler(config):
     handler.setLevel(ERROR)
     handler.setFormatter(_FORMATTER)
     return handler
-
