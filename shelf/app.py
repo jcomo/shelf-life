@@ -1,3 +1,4 @@
+from signal import signal, SIGUSR1
 from uuid import uuid4 as guid
 from traceback import format_exc
 
@@ -14,6 +15,14 @@ from shelf.models import ItemSearchResultSchema, FoodItemGuideSchema
 from shelf.exceptions import ShelfLifeException
 
 
+def cache_flush_handler(cache, logger):
+    def _handler(signum, frame):
+        logger.info('Flushing cache...')
+        cache.clear()
+
+    return _handler
+
+
 class ShelfLifeApi(Flask):
     def log_exception(self, exc_info):
         pass
@@ -23,12 +32,16 @@ app = ShelfLifeApi('shelf-life')
 app.config.from_object(Configuration)
 
 if not running_in(Environment.TEST):
+    app.logger.setLevel(app.config['LOG_LEVEL'])
     app.logger.addHandler(stream_handler(app.config))
     app.logger.addHandler(file_handler(app.config))
     cache = RedisCache(host=app.config['REDIS_HOST'],
                        port=app.config['REDIS_PORT'],
                        key_prefix=app.config['CACHE_PREFIX'])
     client = StillTastyCachedClient(cache, RedisError, app.logger)
+
+    # Set up a signal to flush the cache of all app-related data
+    signal(SIGUSR1, cache_flush_handler(cache, app.logger))
 else:
     client = StillTastyFixtureClient('fixtures')
 

@@ -105,11 +105,15 @@ class StillTastyCachedClient(StillTastyClient):
         self.logger = logger
 
     def search(self, query):
-        fallback = lambda: self.client.search(query)
+        def fallback():
+            return self.client.search(query)
+
         return self._fetch_from_cache(query, fallback, self._SEARCH_TIMEOUT)
 
     def item_life(self, item_id):
-        fallback = lambda: self.client.item_life(item_id)
+        def fallback():
+            return self.client.item_life(item_id)
+
         return self._fetch_from_cache(item_id, fallback, self._ITEM_TIMEOUT)
 
     def _fetch_from_cache(self, key, fallback, set_timeout):
