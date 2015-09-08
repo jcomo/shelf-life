@@ -35,6 +35,15 @@ else:
     client = StillTastyFixtureClient('fixtures')
 
 
+@app.route('/')
+def status():
+    return jsonify({
+        'hash': Configuration.HASH,
+        'debug': Configuration.DEBUG,
+        'environment': Configuration.SERVICE_ENVIRONMENT,
+    })
+
+
 @app.route('/search')
 def search():
     query = request.args.get('q')

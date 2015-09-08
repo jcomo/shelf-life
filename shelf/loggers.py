@@ -1,4 +1,4 @@
-from logging import StreamHandler, Formatter, ERROR, DEBUG
+from logging import StreamHandler, Formatter, ERROR
 from logging.handlers import RotatingFileHandler
 
 _FORMATTER = Formatter('[%(name)s:%(levelname)s] %(asctime)s -- %(message)s')

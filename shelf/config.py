@@ -1,5 +1,6 @@
 import os
 import logging
+from subprocess import check_output
 
 
 def running_in(environment):
@@ -22,8 +23,21 @@ class Environment(object):
         return environment
 
 
+def _git_hash():
+    app_dir = os.path.dirname(os.path.realpath(__file__))
+    command = ['git', '-C', app_dir, 'rev-parse', 'HEAD']
+
+    try:
+        return check_output(command).strip()
+    except OSError:
+        return "unknown"
+
+
 class Configuration(object):
     DEBUG = False
+    HASH = _git_hash()
+
+    JSONIFY_PRETTYPRINT_REGULAR = DEBUG
 
     LOG_LEVEL = os.environ.get('LOG_LEVEL', logging.DEBUG)
     LOG_FILE_NAME = os.environ.get('LOG_FILE_NAME', 'error.log')
