@@ -1,5 +1,6 @@
 import re
 
+from marshmallow import Schema, fields
 from inflection import titleize
 
 from flask import url_for
@@ -23,15 +24,24 @@ class ItemSearchResult(object):
         return url.split('/')[-1]
 
 
+class ItemSearchResultSchema(Schema):
+    id = fields.Int(attribute='item_id')
+    name = fields.Str()
+    url = fields.Method('external_url')
+
+    def external_url(self, result):
+        return url_for('shelf_life', item_id=result.item_id, _external=True)
+
+
 class ShelfLife(object):
     _EXPIRATION_TIME_PATTERN = re.compile(r'^(\d+)(-\d+)? (days?|weeks?|months?|years?)')
 
-    def __init__(self, time, storage):
-        self.time = time
+    def __init__(self, expiration, storage):
+        self.expiration = expiration
         self.storage = storage
 
     def time_in_seconds(self):
-        match = self._EXPIRATION_TIME_PATTERN.match(self.time)
+        match = self._EXPIRATION_TIME_PATTERN.match(self.expiration)
         if match:
             amount = int(match.group(1))
             unit = match.group(3)
@@ -48,6 +58,12 @@ class ShelfLife(object):
             return amount_by_day
 
 
+class ShelfLifeSchema(Schema):
+    storage = fields.Str()
+    expiration = fields.Str()
+    time = fields.Function(lambda x, ctx: x.time_in_seconds())
+
+
 class FoodItemGuide(object):
     def __init__(self, methods, tips):
         self.methods = methods
@@ -57,26 +73,6 @@ class FoodItemGuide(object):
         return bool(self.methods)
 
 
-class StillTastyJSONEncoder(JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, ItemSearchResult):
-            return {
-                'id': obj.item_id,
-                'name': obj.name,
-                'url': url_for('shelf_life', item_id=obj.item_id, _external=True),
-            }
-
-        elif isinstance(obj, FoodItemGuide):
-            return {
-                'methods': obj.methods,
-                'tips': obj.tips,
-            }
-
-        elif isinstance(obj, ShelfLife):
-            return {
-                'expiration': obj.time,
-                'storage': obj.storage,
-                'time': obj.time_in_seconds(),
-            }
-
-        return super(StillTastyJSONEncoder, self).default(obj)
+class FoodItemGuideSchema(Schema):
+    methods = fields.Nested(ShelfLifeSchema, many=True)
+    tips = fields.Raw()

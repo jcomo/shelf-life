@@ -10,7 +10,7 @@ from redis import RedisError
 from shelf.loggers import stream_handler, file_handler
 from shelf.config import Configuration, Environment, running_in
 from shelf.client import StillTastyCachedClient, StillTastyFixtureClient
-from shelf.models import StillTastyJSONEncoder
+from shelf.models import ItemSearchResultSchema, FoodItemGuideSchema
 from shelf.exceptions import ShelfLifeException
 
 
@@ -21,8 +21,6 @@ class ShelfLifeApi(Flask):
 
 app = ShelfLifeApi('shelf-life')
 app.config.from_object(Configuration)
-
-app.json_encoder = StillTastyJSONEncoder
 
 if not running_in(Environment.TEST):
     app.logger.addHandler(stream_handler(app.config))
@@ -48,18 +46,20 @@ def status():
 def search():
     query = request.args.get('q')
     search_results = client.search(query)
+    serializer = ItemSearchResultSchema()
     return jsonify({
         'query': query,
-        'results': search_results,
+        'results': serializer.dump(search_results, many=True).data,
     })
 
 
 @app.route('/items/<int:item_id>')
 def shelf_life(item_id):
-    item_results = client.item_life(item_id)
+    item_result = client.item_life(item_id)
+    serializer = FoodItemGuideSchema()
     return jsonify({
         'id': item_id,
-        'results': item_results,
+        'results': serializer.dump(item_result).data,
     })
 
 
