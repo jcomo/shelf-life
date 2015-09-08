@@ -1,17 +1,12 @@
-PRE_COMMIT_HOOK = ".git/hooks/pre-commit"
-
 task :default => [:clean, "venv:build", "venv:serve"]
 
-file PRE_COMMIT_HOOK do |t|
-    File.open(t.name, 'w', 0755) do |f|
-        f.puts "#!/bin/sh"
-        f.puts "echo Running PEP8 checks..."
-        f.puts "pep8 --ignore E501 scripts shelf"
-    end
-end
 
 desc "Set up git hooks"
-task :hooks => [PRE_COMMIT_HOOK]
+task :hooks do
+    Dir.chdir('.git/hooks') do
+        sh "ln -sf ../../hooks/pre-commit pre-commit"
+    end
+end
 
 namespace :venv do
     VENV = "env"
@@ -60,5 +55,4 @@ task :clean do
     sh "rm -rf **/*.pyc"
     sh "rm -rf **/__pycache__"
     sh "rm -f *.log*"
-    sh "rm -f #{PRE_COMMIT_HOOK}"
 end
