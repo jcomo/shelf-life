@@ -1,0 +1,15 @@
+shelf:
+    build: .
+    command: python server.py --port 9000
+    ports:
+        - "9000:9000"
+    volumes:
+        - .:/app
+    links:
+        - redis
+    environment:
+        REDIS_HOST: redis
+        REDIS_PORT: 6379
+
+redis:
+    image: redis:3
