@@ -88,5 +88,33 @@ class StillTastyHTTPClient(StillTastyClient):
         return self._fetch_page(url)
 
     def _fetch_page(self, url):
+        # TODO: error handling if it is not a 200 (or if parsing fails?)
         response = self.session.get(url)
         return response.text
+
+
+class StillTastyCachedClient(StillTastyClient):
+    _SEARCH_TIMEOUT = 60 * 60
+    _ITEM_TIMEOUT = 60 * 60 * 24
+
+    def __init__(self, cache):
+        self.client = StillTastyHTTPClient()
+        self.cache = cache
+
+    def search(self, query):
+        fallback = lambda: (self.client.search(query), self._SEARCH_TIMEOUT)
+        return self._fetch_from_cache(query, fallback)
+
+    def item_life(self, item_id):
+        fallback = lambda: (self.client.item_life(item_id), self._ITEM_TIMEOUT)
+        return self._fetch_from_cache(item_id, fallback)
+
+    def _fetch_from_cache(self, key, fallback):
+        key = str(key)
+        cached_result = self.cache.get(key)
+        if cached_result:
+            return cached_result
+
+        result, timeout = fallback()
+        self.cache.set(key, result, timeout=timeout)
+        return result

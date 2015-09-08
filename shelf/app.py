@@ -2,11 +2,12 @@ from uuid import uuid4 as guid
 from traceback import format_exc
 
 from flask import Flask, request, jsonify
+from werkzeug.contrib.cache import RedisCache
 from requests import Session
 
 from shelf.loggers import stream_handler, file_handler
 from shelf.config import Configuration, Environment, running_in
-from shelf.client import StillTastyHTTPClient, StillTastyFixtureClient
+from shelf.client import StillTastyCachedClient, StillTastyFixtureClient
 from shelf.models import StillTastyJSONEncoder
 from shelf.exceptions import ShelfLifeException
 
@@ -24,7 +25,10 @@ app.json_encoder = StillTastyJSONEncoder
 if not running_in(Environment.TEST):
     app.logger.addHandler(stream_handler(app.config))
     app.logger.addHandler(file_handler(app.config))
-    client = StillTastyHTTPClient()
+    cache = RedisCache(host=app.config['REDIS_HOST'],
+                       port=app.config['REDIS_PORT'],
+                       key_prefix=app.config['CACHE_PREFIX'])
+    client = StillTastyCachedClient(cache)
 else:
     client = StillTastyFixtureClient('fixtures')
 
