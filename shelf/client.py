@@ -1,4 +1,5 @@
 import os
+from functools import wraps
 
 from bs4 import BeautifulSoup
 from requests import Session
@@ -97,24 +98,33 @@ class StillTastyCachedClient(StillTastyClient):
     _SEARCH_TIMEOUT = 60 * 60
     _ITEM_TIMEOUT = 60 * 60 * 24
 
-    def __init__(self, cache):
+    def __init__(self, cache, error_cls, logger):
         self.client = StillTastyHTTPClient()
         self.cache = cache
+        self.error_cls = error_cls
+        self.logger = logger
 
     def search(self, query):
-        fallback = lambda: (self.client.search(query), self._SEARCH_TIMEOUT)
-        return self._fetch_from_cache(query, fallback)
+        fallback = lambda: self.client.search(query)
+        return self._fetch_from_cache(query, fallback, self._SEARCH_TIMEOUT)
 
     def item_life(self, item_id):
-        fallback = lambda: (self.client.item_life(item_id), self._ITEM_TIMEOUT)
-        return self._fetch_from_cache(item_id, fallback)
+        fallback = lambda: self.client.item_life(item_id)
+        return self._fetch_from_cache(item_id, fallback, self._ITEM_TIMEOUT)
 
-    def _fetch_from_cache(self, key, fallback):
+    def _fetch_from_cache(self, key, fallback, set_timeout):
         key = str(key)
-        cached_result = self.cache.get(key)
+
+        cached_result = self.__silent(lambda: self.cache.get(key))
         if cached_result:
             return cached_result
 
-        result, timeout = fallback()
-        self.cache.set(key, result, timeout=timeout)
+        result = fallback()
+        self.__silent(lambda: self.cache.set(key, result, timeout=set_timeout))
         return result
+
+    def __silent(self, action):
+        try:
+            return action()
+        except self.error_cls as e:
+            self.logger.error(e.message)
