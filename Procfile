@@ -1,1 +1,1 @@
-web: python server.py --port 9000
+web: gunicorn -b :$PORT -k gevent --log-file - shelf.app:app

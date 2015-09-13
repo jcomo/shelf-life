@@ -34,11 +34,6 @@ def _git_hash():
         return "unknown"
 
 
-def _read_redis_config():
-    url = urlparse(os.environ.get('REDIS_URL', ''))
-    return url.hostname or 'localhost', url.port or 6379
-
-
 class Configuration(object):
     DEBUG = False
     HASH = _git_hash()
@@ -53,5 +48,5 @@ class Configuration(object):
     SERVER_NAME = os.environ.get('SERVER_NAME')
     SERVICE_ENVIRONMENT = Environment.read()
 
-    REDIS_HOST, REDIS_PORT = _read_redis_config()
+    REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost')
     CACHE_PREFIX = os.environ.get('CACHE_PREFIX', 'ShelfLife::')

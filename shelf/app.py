@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 from requests import Session
 
 from werkzeug.contrib.cache import RedisCache
-from redis import RedisError
+from redis import Redis, RedisError
 
 from shelf.loggers import stream_handler, file_handler
 from shelf.config import Configuration, Environment, running_in
@@ -35,8 +35,7 @@ if not running_in(Environment.TEST):
     app.logger.setLevel(app.config['LOG_LEVEL'])
     app.logger.addHandler(stream_handler(app.config))
     app.logger.addHandler(file_handler(app.config))
-    cache = RedisCache(host=app.config['REDIS_HOST'],
-                       port=app.config['REDIS_PORT'],
+    cache = RedisCache(Redis.from_url(app.config['REDIS_URL']),
                        key_prefix=app.config['CACHE_PREFIX'])
     client = StillTastyCachedClient(cache, RedisError, app.logger)
 
