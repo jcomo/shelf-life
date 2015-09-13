@@ -6,18 +6,19 @@ from inflection import titleize
 from flask import url_for
 from flask.json import JSONEncoder
 
+_NAME_SPACE_PATTERN = re.compile('\s\s+')
+
+
+def _clean_item_name(name):
+    space_squashed_name = re.sub(_NAME_SPACE_PATTERN, ' ', name)
+    return titleize(space_squashed_name)
+
 
 class ItemSearchResult(object):
-    _NAME_SPACE_PATTERN = re.compile('\s\s+')
-
     def __init__(self, name, url):
-        self.name = self._clean_item_name(name)
+        self.name = _clean_item_name(name)
         self.url = url
         self.item_id = self._pluck_item_id(url)
-
-    def _clean_item_name(self, name):
-        space_squashed_name = re.sub(self._NAME_SPACE_PATTERN, ' ', name)
-        return titleize(space_squashed_name)
 
     @staticmethod
     def _pluck_item_id(url):
@@ -65,7 +66,8 @@ class ShelfLifeSchema(Schema):
 
 
 class FoodItemGuide(object):
-    def __init__(self, methods, tips):
+    def __init__(self, name, methods, tips):
+        self.name = _clean_item_name(name)
         self.methods = methods
         self.tips = tips
 
@@ -74,5 +76,6 @@ class FoodItemGuide(object):
 
 
 class FoodItemGuideSchema(Schema):
+    name = fields.Str()
     methods = fields.Nested(ShelfLifeSchema, many=True)
     tips = fields.Raw()

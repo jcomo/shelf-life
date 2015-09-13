@@ -71,7 +71,7 @@ def shelf_life(item_id):
     serializer = FoodItemGuideSchema()
     return jsonify({
         'id': item_id,
-        'results': serializer.dump(item_result).data,
+        'data': serializer.dump(item_result).data,
     })
 
 

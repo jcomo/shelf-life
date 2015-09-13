@@ -25,6 +25,9 @@ def parse_search_results(html):
 def parse_item_results(html):
     parser = _html_parser(html)
 
+    name_container = parser.find(class_='bigBlackHeading')
+    name = name_container.string.strip()
+
     storages = [method.string.strip() for method in parser(class_='slicedHead')]
     expirations = [expiration.string.strip() for expiration in parser(class_='days')]
     methods = [ShelfLife(time, storage) for time, storage in zip(expirations, storages)]
@@ -35,7 +38,7 @@ def parse_item_results(html):
     else:
         tips = []
 
-    return FoodItemGuide(methods, tips)
+    return FoodItemGuide(name, methods, tips)
 
 
 class StillTastyClient(object):

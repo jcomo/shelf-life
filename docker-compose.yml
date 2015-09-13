@@ -1,6 +1,6 @@
 shelf:
     build: .
-    command: python server.py --port 9000
+    command: python server.py --port 9000 --debug
     ports:
         - "9000:9000"
     volumes:
