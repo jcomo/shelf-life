@@ -27,7 +27,7 @@ namespace :venv do
 
     desc "Update the html fixtures"
     task :update do
-        sh "PYTHONPATH=`pwd` #{VENV}/bin/python scripts/update_fixtures.py"
+        sh "PYTHONPATH=`pwd` #{VENV}/bin/python scripts/update_fixtures"
     end
 end
 
@@ -41,13 +41,19 @@ namespace :container do
 
     desc "Run the development server"
     task :serve do
-        sh "docker-compose up #{NAME}"
+        sh "docker-compose up -d #{NAME}"
     end
 
     desc "Update the html fixtures"
     task :update do
-        sh "docker-compose run --rm #{NAME} python scripts/update_fixtures.py"
+        sh "docker-compose run --rm #{NAME} python scripts/update_fixtures"
     end
+end
+
+desc "Scrapes the site for items"
+task :scrape => "container:serve" do
+    sh "sleep 1"
+    sh "scripts/scrape $(boot2docker ip):9000"
 end
 
 desc "Clean the working directory"
