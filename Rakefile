@@ -20,6 +20,11 @@ namespace :venv do
         sh "#{VENV}/bin/pip install -U -r requirements.txt"
     end
 
+    desc "Drop into the environment python shell"
+    task :shell do
+        sh "#{VENV}/bin/python"
+    end
+
     desc "Run the development server"
     task :serve do
         sh "#{VENV}/bin/python server.py"
@@ -31,27 +36,45 @@ namespace :venv do
     end
 end
 
-namespace :container do
-    NAME = "shelf"
+CONTAINER_NAME = "shelf"
 
+def run_container(daemon=false)
+    if daemon
+        sh "docker-compose up -d #{CONTAINER_NAME}"
+    else
+        sh "docker-compose up #{CONTAINER_NAME}"
+    end
+end
+
+def run_container_command(command)
+    sh "docker-compose run --rm #{CONTAINER_NAME} #{command}"
+end
+
+namespace :container do
     desc "Build the virtual environment"
     task :build => :hooks do
-        sh "docker-compose build #{NAME}"
+        sh "docker-compose build #{CONTAINER_NAME}"
+    end
+
+    desc "Drop into the environment python shell"
+    task :shell do
+        run_container_command "python"
     end
 
     desc "Run the development server"
     task :serve do
-        sh "docker-compose up -d #{NAME}"
+        run_container
     end
 
     desc "Update the html fixtures"
     task :update do
-        sh "docker-compose run --rm #{NAME} python scripts/update_fixtures"
+        run_container_command "python scripts/update_fixtures"
     end
 end
 
 desc "Scrapes the site for items"
-task :scrape => "container:serve" do
+task :scrape do
+    run_container(daemon=true)
     sh "sleep 1"
     sh "scripts/scrape $(boot2docker ip):9000"
 end
