@@ -1,6 +1,7 @@
 import os
 import logging
-from subprocess import check_output
+from urlparse import urlparse
+from subprocess import check_output, CalledProcessError
 
 
 def running_in(environment):
@@ -29,8 +30,13 @@ def _git_hash():
 
     try:
         return check_output(command).strip()
-    except OSError:
+    except (CalledProcessError, OSError):
         return "unknown"
+
+
+def _read_redis_config():
+    url = urlparse(os.environ.get('REDIS_URL', ''))
+    return url.hostname or 'localhost', url.port or 6379
 
 
 class Configuration(object):
@@ -47,6 +53,5 @@ class Configuration(object):
     SERVER_NAME = os.environ.get('SERVER_NAME')
     SERVICE_ENVIRONMENT = Environment.read()
 
-    REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
-    REDIS_PORT = os.environ.get('REDIS_PORT', 6379)
+    REDIS_HOST, REDIS_PORT = _read_redis_config()
     CACHE_PREFIX = os.environ.get('CACHE_PREFIX', 'ShelfLife::')
