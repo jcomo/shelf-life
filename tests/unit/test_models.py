@@ -1,7 +1,13 @@
 from datetime import timedelta
 from unittest import TestCase
 
-from shelf.models import ShelfLife
+from shelf.models import ItemSearchResult, ShelfLife, FoodItemGuide
+
+
+class ItemSearchResultTestCase(TestCase):
+    def test_it_extracts_item_id_from_url(self):
+        item = ItemSearchResult('Watermelon', 'http://example.com/items/123')
+        self.assertEqual('123', item.item_id)
 
 
 class ShelfLifeTestCase(TestCase):
@@ -28,3 +34,11 @@ class ShelfLifeTestCase(TestCase):
     def test_it_converts_expiration_string_in_years_to_time_in_seconds(self):
         self.assertExpirationConversionEqual('1 year', self._DAY_IN_SECONDS * 365)
         self.assertExpirationConversionEqual('2 years', self._DAY_IN_SECONDS * 365 * 2)
+
+
+class FoodItemGuideTestCase(TestCase):
+    def test_it_is_falsey_with_no_storage_methods(self):
+        self.assertFalse(FoodItemGuide('Watermelon', [], []))
+
+    def test_it_is_truthy_with_storage_methods(self):
+        self.assertTrue(FoodItemGuide('Watermelon', ['Freezer'], []))

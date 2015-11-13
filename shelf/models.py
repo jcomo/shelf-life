@@ -20,6 +20,9 @@ class ItemSearchResult(object):
         self.url = url
         self.item_id = self._pluck_item_id(url)
 
+    def __repr__(self):
+        return '<ItemSearchResult [{self.item_id!s}] {self.name!r}>'.format(self=self)
+
     @staticmethod
     def _pluck_item_id(url):
         return url.split('/')[-1]
@@ -40,6 +43,9 @@ class ShelfLife(object):
     def __init__(self, expiration, storage):
         self.expiration = expiration
         self.storage = storage
+
+    def __repr__(self):
+        return '<ShelfLife: {self.storage!s} - {self.expiration!s}>'.format(self=self)
 
     def time_in_seconds(self):
         match = self._EXPIRATION_TIME_PATTERN.match(self.expiration)
@@ -73,6 +79,9 @@ class FoodItemGuide(object):
 
     def __nonzero__(self):
         return bool(self.methods)
+
+    def __repr__(self):
+        return '<FoodItemGuide {self.name!r}>'.format(self=self)
 
 
 class FoodItemGuideSchema(Schema):
