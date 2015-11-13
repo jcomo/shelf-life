@@ -69,7 +69,7 @@ desc "Scrapes the site for items"
 task :scrape do
     run_container(daemon=true)
     sh "sleep 1"
-    sh "scripts/scrape $(boot2docker ip):9000"
+    sh "scripts/scrape $(docker-machine ip dev):9000"
 end
 
 def rmall(pattern)
