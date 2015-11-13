@@ -41,12 +41,19 @@ namespace :test do
         cc "env py.test tests/integration"
     end
 
+    desc "Run sanity tests"
+    task :sanity do
+        cc "env py.test tests/sanity"
+    end
+
     desc "Run all tests"
-    task :all => [:unit, :functional, :integration]
+    task :all do
+        cc "env py.test"
+    end
 end
 
 desc "Run basic tests"
-task :test => ["test:unit", "test:functional"]
+task :test => ["test:unit", "test:functional", "test:sanity"]
 
 desc "Run the development server"
 task :serve do

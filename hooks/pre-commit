@@ -12,11 +12,11 @@ fail () {
 echo -n "Stashing unstaged, untracked files... "
 silence git stash -k -u && echo "done." || fail 1
 
-echo "Running PEP8 checks..."
-pep8 --ignore E501 scripts shelf
+echo "Running tests..."
+rake test
 
-pep8_ret=$?
+test_run_ret=$?
 
 echo -n "Restoring working dir... "
 silence git stash pop && echo "done." || fail 0
-exit $pep8_ret
+exit $test_run_ret

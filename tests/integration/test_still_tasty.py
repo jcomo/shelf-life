@@ -2,6 +2,7 @@ from unittest import TestCase
 
 from shelf.client import StillTastyHTTPClient
 
+
 class StillTastyTestCase(TestCase):
     def setUp(self):
         self.client = StillTastyHTTPClient()
@@ -13,7 +14,6 @@ class StillTastyTestCase(TestCase):
         for result in results:
             self.assertIn('watermelon', result.name.lower())
             self.assertIsNotNone(result.item_id, "Expected result to have an item id")
-
 
     def test_it_returns_item_results(self):
         item_id = '18665'
