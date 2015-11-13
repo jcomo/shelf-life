@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from requests import Session
 
 from shelf.models import ItemSearchResult, FoodItemGuide, ShelfLife
-from shelf.exceptions import ItemNotFound
+from shelf.exceptions import ItemNotFound, DatabaseUnreachable
 
 
 def _html_parser(html):
@@ -26,7 +26,10 @@ def parse_item_results(html):
     parser = _html_parser(html)
 
     name_container = parser.find(class_='bigBlackHeading')
-    name = name_container.string.strip()
+    if name_container:
+        name = name_container.string.strip()
+    else:
+        name = ''
 
     storages = [method.string.strip() for method in parser(class_='slicedHead')]
     expirations = [expiration.string.strip() for expiration in parser(class_='days')]
@@ -92,8 +95,10 @@ class StillTastyHTTPClient(StillTastyClient):
         return self._fetch_page(url)
 
     def _fetch_page(self, url):
-        # TODO: error handling if it is not a 200 (or if parsing fails?)
         response = self.session.get(url)
+        if response.status_code != 200:
+            raise DatabaseUnreachable
+
         return response.text
 
 

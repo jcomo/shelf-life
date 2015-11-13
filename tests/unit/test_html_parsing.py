@@ -69,14 +69,13 @@ class HTMLParsingTestCase(TestCase):
 
         self.assertEqual(["Store in plastic wrap"], result.tips)
 
+    def test_name_is_blank_when_missing(self):
+        HTML = "<html></html>"
+        result = parse_item_results(HTML)
+        self.assertEqual('', result.name)
+
     def test_properties_are_empty_lists_when_none_exist(self):
-        HTML = """
-        <html>
-            <div class="bigBlackHeading">
-                Watermelon Cut
-            </div>
-        </html>
-        """
+        HTML = "<html></html>"
         result = parse_item_results(HTML)
 
         self.assertEqual([], result.methods)

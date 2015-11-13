@@ -4,3 +4,7 @@ class ShelfLifeException(Exception):
 
 class ItemNotFound(ShelfLifeException):
     status_code = 404
+
+
+class DatabaseUnreachable(ShelfLifeException):
+    pass
