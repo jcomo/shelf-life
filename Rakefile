@@ -53,7 +53,9 @@ namespace :test do
 end
 
 desc "Run basic tests"
-task :test => ["test:unit", "test:functional", "test:sanity"]
+task :test do
+    cc "env py.test tests/unit tests/functional tests/sanity"
+end
 
 desc "Run the development server"
 task :serve do

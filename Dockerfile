@@ -6,6 +6,8 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 COPY requirements-test.txt /tmp/requirements-test.txt
 RUN pip install --no-cache-dir -r /tmp/requirements-test.txt
 
+RUN pip install pep8
+
 ENV PYTHONPATH /app
 
 COPY . /app
