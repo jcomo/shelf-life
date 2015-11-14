@@ -1,0 +1,12 @@
+language: python
+python:
+    - "2.7"
+
+services:
+    - redis-server
+
+env:
+    - SERVICE_ENVIRONMENT=test REDIS_URL=redis://localhost
+
+install: pip install -r requirements-common.txt -r requirements-test.txt
+script: py.test tests

@@ -1,6 +1,6 @@
 FROM python:2.7
 
-COPY requirements.txt /tmp/requirements.txt
+COPY requirements-common.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY requirements-test.txt /tmp/requirements-test.txt
