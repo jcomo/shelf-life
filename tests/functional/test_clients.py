@@ -10,7 +10,7 @@ from shelf import exceptions
 from shelf.client import StillTastyClient, StillTastyHTTPClient, StillTastyCachedClient
 
 
-class TestCacheException(Exception):
+class CacheTestException(Exception):
     pass
 
 
@@ -57,7 +57,7 @@ class StillTastyCachedClientTestCase(TestCase):
         self.logger = Mock(spec=Logger)
         self.cache = SimpleCache()
         self.client = Mock(spec=StillTastyClient)
-        self.cached_client = StillTastyCachedClient(self.cache, TestCacheException, self.logger)
+        self.cached_client = StillTastyCachedClient(self.cache, CacheTestException, self.logger)
         self.cached_client.client = self.client
 
     def test_it_retrieves_from_the_cache_when_searching(self):
@@ -87,7 +87,7 @@ class StillTastyCachedClientTestCase(TestCase):
         self.client.item_life.assert_has_calls([call(item_id)])
 
     def test_it_logs_and_does_not_blow_up_on_cache_exception(self):
-        exception = TestCacheException('Cache Exception')
+        exception = CacheTestException('Cache Exception')
         error_cache = Mock(spec=SimpleCache)
         error_cache.get.side_effect = exception
         self.cached_client.cache = error_cache
