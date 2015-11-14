@@ -11,5 +11,5 @@ def write_page(page_data, filename):
 
 if __name__ == '__main__':
     client = StillTastyHTTPClient()
-    write_page(client.fetch_search_page('water'), 'search.html')
-    write_page(client.fetch_item_page(18655), 'results.html')
+    write_page(client.fetch_search_page('watermelon'), 'search.html')
+    write_page(client.fetch_item_page(18665), 'results.html')

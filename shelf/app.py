@@ -31,7 +31,9 @@ class ShelfLifeApi(Flask):
 app = ShelfLifeApi('shelf-life')
 app.config.from_object(Configuration)
 
-if not running_in(Environment.TEST):
+if running_in(Environment.TEST):
+    client = StillTastyFixtureClient('fixtures')
+else:
     app.logger.setLevel(app.config['LOG_LEVEL'])
     app.logger.addHandler(stream_handler(app.config))
     app.logger.addHandler(file_handler(app.config))
@@ -41,8 +43,6 @@ if not running_in(Environment.TEST):
 
     # Set up a signal to flush the cache of all app-related data
     signal(SIGUSR1, cache_flush_handler(cache, app.logger))
-else:
-    client = StillTastyFixtureClient('fixtures')
 
 
 @app.route('/')

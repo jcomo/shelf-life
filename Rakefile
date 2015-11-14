@@ -11,8 +11,14 @@ def run_container(daemon=false)
 end
 
 # Run a command within the container
-def cc(command)
-    sh "docker-compose run --rm #{CONTAINER_NAME} #{command}"
+def cc(command, environment = {})
+    environment_flags = environment.map { |k, v| "-e #{k}=#{v}" }.join(" ")
+    sh "docker-compose run --rm #{environment_flags} #{CONTAINER_NAME} #{command}"
+end
+
+# Run a container command in the test environment
+def tcc(command)
+    cc(command, "SERVICE_ENVIRONMENT" => "test")
 end
 
 desc "Build the application container"
@@ -28,33 +34,33 @@ end
 namespace :test do
     desc "Run unit tests"
     task :unit do
-        cc "env py.test tests/unit"
+        tcc "env py.test tests/unit"
     end
 
     desc "Run functional tests"
     task :functional do
-        cc "env py.test tests/functional"
+        tcc "env py.test tests/functional"
     end
 
     desc "Run integration tests"
     task :integration do
-        cc "env py.test tests/integration"
+        tcc "env py.test tests/integration"
     end
 
     desc "Run sanity tests"
     task :sanity do
-        cc "env py.test tests/sanity"
+        tcc "env py.test tests/sanity"
     end
 
     desc "Run all tests"
     task :all do
-        cc "env py.test"
+        tcc "env py.test"
     end
 end
 
 desc "Run basic tests"
 task :test do
-    cc "env py.test tests/unit tests/functional tests/sanity"
+    tcc "env py.test tests/unit tests/functional tests/sanity"
 end
 
 desc "Run the development server"
