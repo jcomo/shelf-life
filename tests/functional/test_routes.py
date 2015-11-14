@@ -1,14 +1,22 @@
 from flask import url_for
-from flask_testing import TestCase
 
-from shelf.app import app
+from tests.test_case import APITestCase
+
 from shelf.models import ShelfLife
 
 
-class SearchTestCase(TestCase):
-    def create_app(self):
-        return app
+class BadRequestTestCase(APITestCase):
+    def test_json_is_returned_on_bad_request(self):
+        response = self.client.get('/admin.php')
 
+        self.assertEqual(404, response.status_code)
+        self.assertDictEqual(response.json, {
+            'status': 404,
+            'message': 'Not Found',
+        })
+
+
+class StatusTestCase(APITestCase):
     def test_status_returns_metadata_about_running_application(self):
         response = self.client.get(url_for('status'))
 
@@ -19,6 +27,8 @@ class SearchTestCase(TestCase):
         self.assertEqual(data['debug'], False)
         self.assertEqual(data['environment'], 'test')
 
+
+class SearchTestCase(APITestCase):
     def test_search_returns_results(self):
         query = 'watermelon'
         response = self.client.get(url_for('search'), query_string={'q': query})
@@ -40,6 +50,8 @@ class SearchTestCase(TestCase):
             ],
         })
 
+
+class ItemResourceTestCase(APITestCase):
     def test_items_resource_returns_data_about_specific_item(self):
         item_id = 18665
         response = self.client.get(url_for('shelf_life', item_id=item_id))
