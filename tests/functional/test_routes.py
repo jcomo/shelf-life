@@ -9,10 +9,19 @@ class SearchTestCase(TestCase):
     def create_app(self):
         return app
 
+    def test_status_returns_metadata_about_running_application(self):
+        response = self.client.get(url_for('status'))
+
+        self.assertEqual(200, response.status_code)
+        data = response.json
+
+        self.assertRegexpMatches(data['hash'], r'^[0-9a-f]{40}$')
+        self.assertEqual(data['debug'], False)
+        self.assertEqual(data['environment'], 'test')
+
     def test_search_returns_results(self):
         query = 'watermelon'
-        url = url_for('search')
-        response = self.client.get(url, query_string={'q': query})
+        response = self.client.get(url_for('search'), query_string={'q': query})
 
         self.assertEqual(200, response.status_code)
         self.assertDictEqual(response.json, {
@@ -33,8 +42,7 @@ class SearchTestCase(TestCase):
 
     def test_items_resource_returns_data_about_specific_item(self):
         item_id = 18665
-        url = url_for('shelf_life', item_id=item_id)
-        response = self.client.get(url)
+        response = self.client.get(url_for('shelf_life', item_id=item_id))
 
         expected_fridge_storage = ShelfLife('3-4 days', 'Refrigerator')
         expected_freezer_storage = ShelfLife('10-12 months', 'Freezer')
