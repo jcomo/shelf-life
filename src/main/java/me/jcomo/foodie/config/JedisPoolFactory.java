@@ -1,6 +1,7 @@
 package me.jcomo.foodie.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.lifecycle.Managed;
 import io.dropwizard.setup.Environment;
 import me.jcomo.foodie.managers.JedisPoolManager;
 import redis.clients.jedis.JedisPool;
@@ -9,21 +10,16 @@ import redis.clients.jedis.Protocol;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.net.URI;
+import java.net.URL;
 
 public class JedisPoolFactory {
-    private static final String DEFAULT_HOST = "localhost";
-    private static final int DEFAULT_PORT = 6379;
     private static final int DEFAULT_MAX_TOTAL_CONNECTIONS = 1024;
 
+    @NotNull
     @JsonProperty
-    private String host = DEFAULT_HOST;
-
-    @Min(1)
-    @Max(65535)
-    @JsonProperty
-    private int port = DEFAULT_PORT;
-
-    private String password;
+    private URI uri;
 
     @JsonProperty
     private int timeout = Protocol.DEFAULT_TIMEOUT;
@@ -37,28 +33,12 @@ public class JedisPoolFactory {
     @JsonProperty
     private int maxTotal = DEFAULT_MAX_TOTAL_CONNECTIONS;
 
-    public String getHost() {
-        return host;
+    public URI getUri() {
+        return uri;
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUri(URI uri) {
+        this.uri = uri;
     }
 
     public int getTimeout() {
@@ -99,10 +79,19 @@ public class JedisPoolFactory {
         config.setMaxIdle(getMaxIdle());
         config.setMaxTotal(getMaxTotal());
 
-        final JedisPool pool =
-                new JedisPool(config, getHost(), getPort(), getTimeout(), getPassword());
+        final JedisPool pool = new JedisPool(config, getUri(), getTimeout());
 
-        environment.lifecycle().manage(new JedisPoolManager(pool));
+        environment.lifecycle().manage(new Managed() {
+            @Override
+            public void start() throws Exception {
+                pool.getResource();
+            }
+
+            @Override
+            public void stop() throws Exception {
+                pool.destroy();
+            }
+        });
 
         return pool;
     }

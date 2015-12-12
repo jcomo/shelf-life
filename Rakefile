@@ -8,7 +8,7 @@ end
 desc "Build the service"
 task :build do
   sh "mvn package"
-  sh "docker build -t foodie ."
+  sh "docker-compose build"
 end
 
 desc "Run the service"
