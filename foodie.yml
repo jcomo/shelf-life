@@ -1,5 +1,16 @@
 cacheKeyPrefix: 'stilltasty::'
 
+# Currently a bug in Dropwizard that requires nested config
+# options to be defined in order to override with properties.
+# This configuration can be removed when the bug is fixed
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
 redis:
   host: localhost
   port: 6379
