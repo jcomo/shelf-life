@@ -1,0 +1,17 @@
+{
+  "name": "Watermelon",
+  "methods": [
+    {
+      "location": "Refrigerator",
+      "expiration": "4 days"
+    },
+    {
+      "location": "Freezer",
+      "expiration": "1 month"
+    }
+  ],
+  "tips": [
+    "Leave seeds in watermelon",
+    "Wrap with plastic"
+  ]
+}

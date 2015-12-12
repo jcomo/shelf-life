@@ -1,0 +1,13 @@
+foodie:
+  image: foodie:latest
+  command: java -Ddw.redis.host=redis -jar foodie-standalone.jar server /cfg/foodie.yml
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+  volumes:
+    - foodie.yml:/cfg/foodie.yml
+  links:
+    - redis
+
+redis:
+  image: redis:3

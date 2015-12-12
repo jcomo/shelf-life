@@ -1,0 +1,8 @@
+cacheKeyPrefix: 'stilltasty::'
+
+redis:
+  host: localhost
+  port: 6379
+
+httpClient:
+  userAgent: Foodie (Apache HttpClient)

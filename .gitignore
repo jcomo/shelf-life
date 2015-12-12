@@ -1,7 +1,4 @@
-*.log
+.idea/
+*.iml
 
-*.pyc
-__pycache__/
-.cache/
-
-env/
+target/
