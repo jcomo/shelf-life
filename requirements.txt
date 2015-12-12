@@ -1,3 +1,0 @@
--r requirements-common.txt
-gevent==1.0.2
-gunicorn==19.3.0
