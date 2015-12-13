@@ -3,13 +3,15 @@ package me.jcomo.stilltasty.core;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static me.jcomo.stilltasty.core.Humanize.titleize;
+
 public class SearchResult {
     private int id = 0;
     private String name;
     private URL url;
 
     public SearchResult(String name, String url) {
-        this.name = name;
+        this.name = titleize(name);
         try {
             this.url = new URL(url);
             this.id = pluckItemId();

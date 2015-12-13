@@ -2,13 +2,15 @@ package me.jcomo.stilltasty.core;
 
 import java.util.List;
 
+import static me.jcomo.stilltasty.core.Humanize.titleize;
+
 public class StorageGuide {
     private String food;
     private List<StorageMethod> storageMethods;
     private List<String> storageTips;
 
     public StorageGuide(String food, List<StorageMethod> storageMethods, List<String> storageTips) {
-        this.food = food;
+        this.food = titleize(food);
         this.storageMethods = storageMethods;
         this.storageTips = storageTips;
     }
