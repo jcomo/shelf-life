@@ -69,6 +69,7 @@ public class StorageMethod {
         return "StorageMethod{" +
                 "location='" + location + '\'' +
                 ", expiration='" + expiration + '\'' +
+                ", expirationTime=" + expirationTime +
                 '}';
     }
 }
