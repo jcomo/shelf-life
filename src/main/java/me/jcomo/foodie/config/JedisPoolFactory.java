@@ -3,16 +3,12 @@ package me.jcomo.foodie.config;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.lifecycle.Managed;
 import io.dropwizard.setup.Environment;
-import me.jcomo.foodie.managers.JedisPoolManager;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Protocol;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
-import java.net.URL;
 
 public class JedisPoolFactory {
     private static final int DEFAULT_MAX_TOTAL_CONNECTIONS = 1024;
