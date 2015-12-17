@@ -1,11 +1,12 @@
 package me.jcomo.foodie.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import me.jcomo.foodie.core.SearchRequest;
+import me.jcomo.foodie.api.SearchRequest;
 import me.jcomo.stilltasty.client.StillTastyClient;
 import me.jcomo.stilltasty.client.StillTastyClientException;
 import me.jcomo.stilltasty.core.SearchResult;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +23,7 @@ public class StillTastySearchResource {
 
     @GET
     @Timed
+    @PermitAll
     public List<SearchResult> search(@Valid @BeanParam SearchRequest req) throws StillTastyClientException {
         return client.search(req.getQuery());
     }

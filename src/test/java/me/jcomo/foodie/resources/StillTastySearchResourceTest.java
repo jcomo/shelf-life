@@ -1,7 +1,7 @@
 package me.jcomo.foodie.resources;
 
 import io.dropwizard.testing.junit.ResourceTestRule;
-import me.jcomo.foodie.core.SearchRequest;
+import me.jcomo.foodie.api.SearchRequest;
 import me.jcomo.stilltasty.client.StillTastyClient;
 import me.jcomo.stilltasty.core.SearchResult;
 import org.junit.After;

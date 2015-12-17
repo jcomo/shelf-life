@@ -1,4 +1,4 @@
-package me.jcomo.foodie.core;
+package me.jcomo.foodie.api;
 
 import org.hibernate.validator.constraints.Length;
 

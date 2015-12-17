@@ -3,15 +3,15 @@ package me.jcomo.foodie.wrapper;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-public class RedisCache implements Cache<String, String> {
+public class PrefixedRedisCache implements Cache<String, String> {
     private final JedisPool pool;
     private final String keyPrefix;
 
-    public RedisCache(JedisPool pool) {
+    public PrefixedRedisCache(JedisPool pool) {
         this(pool, "");
     }
 
-    public RedisCache(JedisPool pool, String keyPrefix) {
+    public PrefixedRedisCache(JedisPool pool, String keyPrefix) {
         this.pool = pool;
         this.keyPrefix = keyPrefix;
     }
