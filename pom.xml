@@ -21,7 +21,7 @@
         <assertj.json.version>1.7.0</assertj.json.version>
         <mockito.version>1.10.19</mockito.version>
         <jbcrypt.version>0.3m</jbcrypt.version>
-        <sqlite.driver.version>3.8.11.2</sqlite.driver.version>
+        <sqlite.driver.version>3.8.6</sqlite.driver.version>
     </properties>
 
     <build>
@@ -80,6 +80,11 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-jdbi</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-migrations</artifactId>
             <version>${dropwizard.version}</version>
         </dependency>
         <dependency>

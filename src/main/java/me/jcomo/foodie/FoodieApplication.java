@@ -6,7 +6,9 @@ import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
 import io.dropwizard.client.HttpClientBuilder;
+import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import me.jcomo.foodie.api.StorageGuideSerializer;
@@ -45,6 +47,13 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
 
     @Override
     public void initialize(Bootstrap<FoodieConfiguration> bootstrap) {
+        bootstrap.addBundle(new MigrationsBundle<FoodieConfiguration>() {
+            @Override
+            public PooledDataSourceFactory getDataSourceFactory(FoodieConfiguration config) {
+                return config.getDataSourceFactory();
+            }
+        });
+
         bootstrap.addCommand(new UpdateFixturesCommand());
     }
 
