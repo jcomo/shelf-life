@@ -20,6 +20,7 @@
         <assertj.version>3.2.0</assertj.version>
         <assertj.json.version>1.7.0</assertj.json.version>
         <mockito.version>1.10.19</mockito.version>
+        <jbcrypt.version>0.3m</jbcrypt.version>
     </properties>
 
     <build>
@@ -90,6 +91,11 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>${jbcrypt.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -1,6 +1,7 @@
 package me.jcomo.foodie.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.security.Principal;
 
@@ -33,11 +34,11 @@ public class User implements Principal {
     }
 
     public boolean passwordMatches(String password) {
-        return hashPassword(password).equals(getPasswordHash());
+        return BCrypt.checkpw(password, passwordHash);
     }
 
     public static String hashPassword(String password) {
-        return password;
+        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     public String getSessionId() {
