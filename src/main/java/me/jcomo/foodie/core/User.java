@@ -31,6 +31,10 @@ public class User implements Principal {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     @JsonIgnore
     public String getName() {

@@ -23,7 +23,8 @@ public class RegistrationService {
 
     private User createNewUser(String username, String password) {
         final User newUser = new User(username, password);
-        users.create(newUser);
+        int createdId = users.create(newUser);
+        newUser.setId(createdId);
         return newUser;
     }
 }
