@@ -2,21 +2,33 @@ package me.jcomo.foodie.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.mindrot.jbcrypt.BCrypt;
+import org.skife.jdbi.v2.StatementContext;
+import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 import java.security.Principal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class User implements Principal {
-    private final String username;
+    private int id;
+
+    private String username;
 
     @JsonIgnore
-    private final String passwordHash;
+    private String passwordHash;
 
     @JsonIgnore
     private String sessionId = "";
 
+    public User() { }
+
     public User(String username, String password) {
         this.username = username;
         this.passwordHash = hashPassword(password);
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -48,6 +60,16 @@ public class User implements Principal {
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
+
+    public static class Mapper implements ResultSetMapper<User> {
+        @Override
+        public User map(int index, ResultSet r, StatementContext ctx) throws SQLException {
+            User u = new User();
+            u.id = r.getInt("id");
+            u.username = r.getString("username");
+            u.passwordHash = r.getString("password_hash");
+            u.sessionId = r.getString("session_id");
+            return u;
+        }
+    }
 }
-
-

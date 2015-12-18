@@ -39,6 +39,7 @@ public class LoginService {
     private String createNewSession(User user) {
         String sessionId = sessions.create(user);
         user.setSessionId(sessionId);
+        users.updateSession(user);
         return sessionId;
     }
 

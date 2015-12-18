@@ -16,6 +16,10 @@ public class InMemoryUsersDAO implements UsersDAO {
         users.putIfAbsent(user.getUsername(), user);
     }
 
+    public void updateSession(User user) {
+        // noop - the user reference will be updated in the map automatically
+    }
+
     public User findByUsername(String username) {
         return users.get(username);
     }

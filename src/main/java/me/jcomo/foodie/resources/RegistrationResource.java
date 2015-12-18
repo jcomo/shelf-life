@@ -20,6 +20,7 @@ public class RegistrationResource {
 
     @POST
     public User register(@Valid @BeanParam UserAuthRequest req) {
-        return registrationService.register(req.getUsername(), req.getPassword());
+        return registrationService.register(req.getUsername(), req.getPassword()).orElseThrow(() ->
+                new BadRequestException("User with that name already exists"));
     }
 }

@@ -1,4 +1,5 @@
-cacheKeyPrefix: 'stilltasty::'
+sessionsCachePrefix: 'sessions::'
+stillTastyCachePrefix: 'stilltasty::'
 
 # Currently a bug in Dropwizard that requires nested config
 # options to be defined in order to override with properties.
@@ -13,6 +14,10 @@ server:
 
 redis:
   uri: redis://localhost:6379
+
+db:
+  driverClass: org.sqlite.JDBC
+  url: jdbc:sqlite:app.db
 
 httpClient:
   userAgent: Foodie (Apache HttpClient)
