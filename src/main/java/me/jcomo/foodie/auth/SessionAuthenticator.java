@@ -4,13 +4,13 @@ import com.google.common.base.Optional;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import me.jcomo.foodie.core.User;
-import me.jcomo.foodie.db.SessionDAO;
+import me.jcomo.foodie.db.SessionsDAO;
 
 
 public class SessionAuthenticator implements Authenticator<String, User> {
-    private SessionDAO sessions;
+    private SessionsDAO sessions;
 
-    public SessionAuthenticator(SessionDAO sessions) {
+    public SessionAuthenticator(SessionsDAO sessions) {
         this.sessions = sessions;
     }
 

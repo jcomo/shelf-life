@@ -1,12 +1,12 @@
 package me.jcomo.foodie.services;
 
 import me.jcomo.foodie.core.User;
-import me.jcomo.foodie.db.UserDAO;
+import me.jcomo.foodie.db.UsersDAO;
 
 public class RegistrationService {
-    private final UserDAO users;
+    private final UsersDAO users;
 
-    public RegistrationService(UserDAO users) {
+    public RegistrationService(UsersDAO users) {
         this.users = users;
     }
 

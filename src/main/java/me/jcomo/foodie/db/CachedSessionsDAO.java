@@ -7,14 +7,14 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class SessionDAO {
+public class CachedSessionsDAO implements SessionsDAO {
     private static final int TTL = 60 * 60 * 24;
     private static final Random SOURCE = new SecureRandom();
 
     private final Cache<String, String> cache;
-    private final UserDAO users;
+    private final UsersDAO users;
 
-    public SessionDAO(Cache<String, String> cache, UserDAO users) {
+    public CachedSessionsDAO(Cache<String, String> cache, UsersDAO users) {
         this.cache = cache;
         this.users = users;
     }
@@ -32,6 +32,10 @@ public class SessionDAO {
         String sessionId = nextSessionId();
         cache.set(sessionId, user.getName(), TTL);
         return sessionId;
+    }
+
+    public void remove(User user) {
+        cache.delete(user.getSessionId());
     }
 
     private String nextSessionId() {

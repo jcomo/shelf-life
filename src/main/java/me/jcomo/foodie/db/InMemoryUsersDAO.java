@@ -5,10 +5,10 @@ import me.jcomo.foodie.core.User;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class UserDAO {
+public class InMemoryUsersDAO implements UsersDAO {
     private final Map<String, User> users;
 
-    public UserDAO() {
+    public InMemoryUsersDAO() {
         this.users = new ConcurrentHashMap<>();
     }
 

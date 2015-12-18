@@ -3,6 +3,7 @@ package me.jcomo.foodie;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
 import io.dropwizard.client.HttpClientBuilder;
 import io.dropwizard.setup.Bootstrap;
@@ -11,8 +12,10 @@ import me.jcomo.foodie.api.StorageGuideSerializer;
 import me.jcomo.foodie.auth.SessionAuthenticator;
 import me.jcomo.foodie.cli.UpdateFixturesCommand;
 import me.jcomo.foodie.core.User;
-import me.jcomo.foodie.db.SessionDAO;
-import me.jcomo.foodie.db.UserDAO;
+import me.jcomo.foodie.db.CachedSessionsDAO;
+import me.jcomo.foodie.db.InMemoryUsersDAO;
+import me.jcomo.foodie.db.SessionsDAO;
+import me.jcomo.foodie.db.UsersDAO;
 import me.jcomo.foodie.health.RedisHealthCheck;
 import me.jcomo.foodie.resources.RegistrationResource;
 import me.jcomo.foodie.resources.SessionResource;
@@ -21,6 +24,7 @@ import me.jcomo.foodie.resources.StillTastySearchResource;
 import me.jcomo.foodie.services.LoginService;
 import me.jcomo.foodie.services.RegistrationService;
 import me.jcomo.foodie.tasks.ClearCacheTask;
+import me.jcomo.foodie.wrapper.Cache;
 import me.jcomo.foodie.wrapper.PrefixedRedisCache;
 import me.jcomo.foodie.wrapper.StillTastyCachedClient;
 import me.jcomo.stilltasty.client.StillTastyHttpClient;
@@ -58,10 +62,10 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
         final StillTastyHttpClient client = new StillTastyHttpClient(httpClient);
         final StillTastyCachedClient cachedClient = new StillTastyCachedClient(stillTastyCache, client);
 
-        final UserDAO users = new UserDAO();
+        final UsersDAO users = new InMemoryUsersDAO();
 
-        final PrefixedRedisCache sessionCache = new PrefixedRedisCache(pool, "sessions::");
-        final SessionDAO sessions = new SessionDAO(sessionCache, users);
+        final Cache<String, String> sessionCache = new PrefixedRedisCache(pool, "sessions::");
+        final SessionsDAO sessions = new CachedSessionsDAO(sessionCache, users);
 
         final RegistrationService registrationService = new RegistrationService(users);
         final LoginService loginService = new LoginService(users, sessions);
@@ -72,6 +76,7 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
         environment.jersey().register(new RegistrationResource(registrationService));
         environment.jersey().register(new SessionResource(loginService));
 
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
         environment.jersey().register(new AuthDynamicFeature(
                 new OAuthCredentialAuthFilter.Builder<User>()
                         .setAuthenticator(new SessionAuthenticator(sessions))

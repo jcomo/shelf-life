@@ -1,10 +1,17 @@
 package me.jcomo.foodie.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.security.Principal;
 
 public class User implements Principal {
-    private String username;
-    private String passwordHash;
+    private final String username;
+
+    @JsonIgnore
+    private final String passwordHash;
+
+    @JsonIgnore
+    private String sessionId = "";
 
     public User(String username, String password) {
         this.username = username;
@@ -12,6 +19,7 @@ public class User implements Principal {
     }
 
     @Override
+    @JsonIgnore
     public String getName() {
         return getUsername();
     }
@@ -30,6 +38,14 @@ public class User implements Principal {
 
     public static String hashPassword(String password) {
         return password;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }
 

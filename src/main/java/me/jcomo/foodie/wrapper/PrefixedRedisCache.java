@@ -31,6 +31,13 @@ public class PrefixedRedisCache implements Cache<String, String> {
     }
 
     @Override
+    public void delete(String key) {
+        try (Jedis jedis = pool.getResource()) {
+            jedis.del(prefixedKey(key));
+        }
+    }
+
+    @Override
     public void clear() {
         try (Jedis jedis = pool.getResource()) {
             String globPattern = prefixedKey("*");
