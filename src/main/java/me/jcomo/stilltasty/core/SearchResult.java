@@ -2,11 +2,12 @@ package me.jcomo.stilltasty.core;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Optional;
 
 import static me.jcomo.stilltasty.core.Humanize.titleize;
 
 public class SearchResult {
-    private int id = 0;
+    private Integer id;
     private String name;
     private URL url;
 
@@ -20,13 +21,17 @@ public class SearchResult {
         }
     }
 
-    private int pluckItemId() {
+    private Integer pluckItemId() {
         String[] urlParts = url.toString().split("/");
         String itemId = urlParts[urlParts.length - 1];
-        return Integer.parseInt(itemId);
+        try {
+            return Integer.parseInt(itemId);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -45,17 +50,17 @@ public class SearchResult {
 
         SearchResult that = (SearchResult) o;
 
-        if (id != that.id) return false;
-        if (!name.equals(that.name)) return false;
-        return url.equals(that.url);
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return url != null ? url.equals(that.url) : that.url == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + url.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
     }
 

@@ -1,6 +1,5 @@
 package me.jcomo.foodie;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
@@ -11,7 +10,7 @@ import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import me.jcomo.foodie.api.StorageGuideSerializer;
+import me.jcomo.foodie.api.StorageGuideMixin;
 import me.jcomo.foodie.auth.SessionAuthenticator;
 import me.jcomo.foodie.cli.UpdateFixturesCommand;
 import me.jcomo.foodie.core.User;
@@ -29,6 +28,7 @@ import me.jcomo.foodie.tasks.ClearCacheTask;
 import me.jcomo.foodie.wrapper.Cache;
 import me.jcomo.foodie.wrapper.PrefixedRedisCache;
 import me.jcomo.foodie.wrapper.StillTastyCachedClient;
+import me.jcomo.stilltasty.core.StorageGuide;
 import org.apache.http.client.HttpClient;
 import org.skife.jdbi.v2.DBI;
 import redis.clients.jedis.JedisPool;
@@ -58,10 +58,6 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
 
     @Override
     public void run(FoodieConfiguration config, Environment environment) {
-        final SimpleModule stillTastyModule = new SimpleModule("StillTastyModels");
-        stillTastyModule.addSerializer(new StorageGuideSerializer());
-        environment.getObjectMapper().registerModule(stillTastyModule);
-
         final HttpClient httpClient = new HttpClientBuilder(environment)
                 .using(config.getHttpClientConfiguration())
                 .build(getName());
@@ -93,6 +89,8 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
                         .setAuthenticator(new SessionAuthenticator(sessions))
                         .setPrefix("Bearer")
                         .buildAuthFilter()));
+
+        environment.getObjectMapper().addMixIn(StorageGuide.class, StorageGuideMixin.class);
 
         environment.healthChecks().register("redis", new RedisHealthCheck(pool));
 
