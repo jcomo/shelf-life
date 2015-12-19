@@ -2,21 +2,22 @@ package me.jcomo.foodie.wrapper;
 
 import me.jcomo.stilltasty.client.StillTastyClient;
 import me.jcomo.stilltasty.client.StillTastyClientException;
+import org.apache.http.client.HttpClient;
 
 public class StillTastyCachedClient extends StillTastyClient {
     private static final int DEFAULT_CACHE_TTL = 60 * 60 * 24;
 
     private final Cache<String, String> cache;
-    private final StillTastyClient client;
     private final int ttl;
 
-    public StillTastyCachedClient(Cache<String, String> cache, StillTastyClient client) {
+    public StillTastyCachedClient(Cache<String, String> cache, HttpClient client) {
         this(cache, client, DEFAULT_CACHE_TTL);
     }
 
-    public StillTastyCachedClient(Cache<String, String> cache, StillTastyClient client, int ttl) {
+    public StillTastyCachedClient(Cache<String, String> cache, HttpClient client, int ttl) {
+        super(client);
+
         this.cache = cache;
-        this.client = client;
         this.ttl = ttl;
     }
 
@@ -28,7 +29,7 @@ public class StillTastyCachedClient extends StillTastyClient {
         if (cachedResult != null) {
             return cachedResult;
         } else {
-            String result = client.fetchSearchResults(query);
+            String result = super.fetchSearchResults(query);
             return cacheAndReturnResult(searchKey, result);
         }
     }
@@ -41,7 +42,7 @@ public class StillTastyCachedClient extends StillTastyClient {
         if (cachedResult != null) {
             return cachedResult;
         } else {
-            String result = client.fetchGuide(foodId);
+            String result = super.fetchGuide(foodId);
             return cacheAndReturnResult(guideKey, result);
         }
     }

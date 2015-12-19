@@ -29,7 +29,6 @@ import me.jcomo.foodie.tasks.ClearCacheTask;
 import me.jcomo.foodie.wrapper.Cache;
 import me.jcomo.foodie.wrapper.PrefixedRedisCache;
 import me.jcomo.foodie.wrapper.StillTastyCachedClient;
-import me.jcomo.stilltasty.client.StillTastyHttpClient;
 import org.apache.http.client.HttpClient;
 import org.skife.jdbi.v2.DBI;
 import redis.clients.jedis.JedisPool;
@@ -69,8 +68,7 @@ public class FoodieApplication extends Application<FoodieConfiguration> {
 
         final JedisPool pool = config.getJedisPool().build(environment);
         final PrefixedRedisCache stillTastyCache = new PrefixedRedisCache(pool, config.getStillTastyCachePrefix());
-        final StillTastyHttpClient client = new StillTastyHttpClient(httpClient);
-        final StillTastyCachedClient cachedClient = new StillTastyCachedClient(stillTastyCache, client);
+        final StillTastyCachedClient cachedClient = new StillTastyCachedClient(stillTastyCache, httpClient);
 
         final DBIFactory factory = new DBIFactory();
         final DBI jdbi = factory.build(environment, config.getDataSourceFactory(), "sqlite");

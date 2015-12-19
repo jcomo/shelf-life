@@ -16,10 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
-public class StillTastyHttpClientTest {
+public class StillTastyClientTest {
     private static final HttpResponse FAKE_RESPONSE;
     private static final StillTastyClient CLIENT =
-            new StillTastyHttpClient(HttpClients.createMinimal());
+            new StillTastyClient(HttpClients.createMinimal());
 
     static {
         FAKE_RESPONSE = mock(HttpResponse.class);
@@ -29,7 +29,7 @@ public class StillTastyHttpClientTest {
     @Test
     public void testItCallsTheAppropriateSearchEndpoint() throws Exception {
         HttpClient httpClient = mock(HttpClient.class);
-        StillTastyClient client = new StillTastyHttpClient(httpClient);
+        StillTastyClient client = new StillTastyClient(httpClient);
 
         when(httpClient.execute(any())).thenReturn(FAKE_RESPONSE);
         client.search("watermelon");
@@ -43,7 +43,7 @@ public class StillTastyHttpClientTest {
     @Test
     public void testItCallsTheAppropriateGuideEndpoint() throws Exception {
         HttpClient httpClient = mock(HttpClient.class);
-        StillTastyClient client = new StillTastyHttpClient(httpClient);
+        StillTastyClient client = new StillTastyClient(httpClient);
 
         when(httpClient.execute(any())).thenReturn(FAKE_RESPONSE);
         client.guide(123);
