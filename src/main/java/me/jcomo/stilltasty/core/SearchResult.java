@@ -39,6 +39,27 @@ public class SearchResult {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SearchResult that = (SearchResult) o;
+
+        if (id != that.id) return false;
+        if (!name.equals(that.name)) return false;
+        return url.equals(that.url);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + url.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "SearchResult{" +
                 "id=" + id +

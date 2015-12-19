@@ -65,6 +65,25 @@ public class StorageMethod {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StorageMethod that = (StorageMethod) o;
+
+        if (location != null ? !location.equals(that.location) : that.location != null) return false;
+        return !(expiration != null ? !expiration.equals(that.expiration) : that.expiration != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = location != null ? location.hashCode() : 0;
+        result = 31 * result + (expiration != null ? expiration.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "StorageMethod{" +
                 "location='" + location + '\'' +
