@@ -54,6 +54,10 @@ public class StorageMethod {
     }
 
     private int endIndexOfFirstNumber() {
+        if (null == expiration || "".equals(expiration) || !isDigit(expiration.charAt(0))) {
+            return -1;
+        }
+
         for (int i = 0; i < expiration.length(); i++) {
             char c = expiration.charAt(i);
             if (!isDigit(c)) {
