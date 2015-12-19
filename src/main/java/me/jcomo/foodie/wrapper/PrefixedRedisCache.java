@@ -7,10 +7,6 @@ public class PrefixedRedisCache implements Cache<String, String> {
     private final JedisPool pool;
     private final String keyPrefix;
 
-    public PrefixedRedisCache(JedisPool pool) {
-        this(pool, "");
-    }
-
     public PrefixedRedisCache(JedisPool pool, String keyPrefix) {
         this.pool = pool;
         this.keyPrefix = keyPrefix;
