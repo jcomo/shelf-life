@@ -27,7 +27,8 @@ public class UpdateFixturesCommand extends ConfiguredCommand<FoodieConfiguration
         final StillTastyClient client = new StillTastyClient(HttpClients.createDefault());
 
         updateFixture("src/test/resources/guide.html", client.fetchGuide(18665));
-        updateFixture("src/test/resources/search.html", client.fetchSearchResults("watermelon"));
+        updateFixture("src/test/resources/search_single_category.html", client.fetchSearchResults("watermelon"));
+        updateFixture("src/test/resources/search_multi_category.html", client.fetchSearchResults("steak"));
     }
 
     private void updateFixture(String fixturePath, String newFixture) throws Exception {
