@@ -24,8 +24,12 @@ public class Humanize {
 
     public static String titleize(String text) {
         String str = text.toLowerCase(Locale.ENGLISH).replaceAll("[\\s_]+", SPACE).trim();
+        return titleize(str, SPACE);
+    }
+
+    private static String titleize(String str, String separator) {
         StringBuilder sb = new StringBuilder(str.length());
-        String[] parts = str.split(SPACE);
+        String[] parts = str.split(separator);
         Matcher m;
 
         for (int i = 0; i < parts.length; i++) {
@@ -35,16 +39,18 @@ public class Humanize {
             if (i > 0 && notLastWord && TITLE_IGNORED_WORDS.contains(word)) {
                 sb.append(word);
             } else if ((m = TITLE_WORD_SEPARATOR.matcher(word)).find()) {
-                sb.append(titleize(word));
+                String newSeparator = m.group(1);
+                sb.append(titleize(word, newSeparator));
+
                 while (m.find()) {
-                    sb.append(titleize(word));
+                    sb.append(titleize(word, newSeparator));
                 }
             } else {
                 sb.append(capitalize(word));
             }
 
             if (notLastWord) {
-                sb.append(SPACE);
+                sb.append(separator);
             }
         }
 
