@@ -1,10 +1,6 @@
 # The following dependencies were calculated from:
 # /Users/jonathan/Developer/shelf-life/pom.xml
 
-java_binary(
-  name = "app",
-  main_class = "me.jcomo.FoodieApplication",
-)
 
 java_library(
     name = "javax_annotation_javax_annotation_api",
@@ -145,6 +141,16 @@ java_library(
 )
 
 java_library(
+    name = "net_javacrumbs_json_unit_json_unit_fluent",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@net_javacrumbs_json_unit_json_unit_fluent//jar",
+        "@net_javacrumbs_json_unit_json_unit_core//jar",
+        "@org_slf4j_slf4j_api//jar",
+    ],
+)
+
+java_library(
     name = "io_dropwizard_dropwizard_lifecycle",
     visibility = ["//visibility:public"],
     exports = [
@@ -226,6 +232,15 @@ java_library(
         "@org_eclipse_jetty_jetty_servlet//jar",
         "@org_eclipse_jetty_jetty_security//jar",
         "@org_eclipse_jetty_jetty_server//jar",
+    ],
+)
+
+java_library(
+    name = "net_javacrumbs_json_unit_json_unit_core",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@net_javacrumbs_json_unit_json_unit_core//jar",
+        "@org_slf4j_slf4j_api//jar",
     ],
 )
 
@@ -320,6 +335,22 @@ java_library(
 )
 
 java_library(
+    name = "org_mockito_mockito_core",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_mockito_mockito_core//jar",
+    ],
+)
+
+java_library(
+    name = "org_ow2_asm_asm_debug_all",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_ow2_asm_asm_debug_all//jar",
+    ],
+)
+
+java_library(
     name = "org_eclipse_jetty_jetty_io",
     visibility = ["//visibility:public"],
     exports = [
@@ -333,6 +364,26 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@com_fasterxml_jackson_module_jackson_module_jaxb_annotations//jar",
+    ],
+)
+
+java_library(
+    name = "io_dropwizard_dropwizard_testing",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@io_dropwizard_dropwizard_testing//jar",
+        "@io_dropwizard_dropwizard_core//jar",
+        "@junit_junit//jar",
+        "@org_assertj_assertj_core//jar",
+        "@org_glassfish_jersey_containers_jersey_container_servlet_core//jar",
+        "@org_glassfish_jersey_core_jersey_client//jar",
+        "@org_glassfish_jersey_core_jersey_server//jar",
+        "@org_glassfish_jersey_test_framework_jersey_test_framework_core//jar",
+        "@org_glassfish_jersey_test_framework_providers_jersey_test_framework_provider_inmemory//jar",
+        "@org_hamcrest_hamcrest_core//jar",
+        "@org_mockito_mockito_core//jar",
+        "@org_objenesis_objenesis//jar",
+        "@org_ow2_asm_asm_debug_all//jar",
     ],
 )
 
@@ -598,6 +649,14 @@ java_library(
 )
 
 java_library(
+    name = "org_assertj_assertj_core",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_assertj_assertj_core//jar",
+    ],
+)
+
+java_library(
     name = "io_dropwizard_dropwizard_jetty",
     visibility = ["//visibility:public"],
     exports = [
@@ -643,6 +702,18 @@ java_library(
 )
 
 java_library(
+    name = "org_glassfish_jersey_test_framework_jersey_test_framework_core",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_glassfish_jersey_test_framework_jersey_test_framework_core//jar",
+        "@junit_junit//jar",
+        "@org_glassfish_jersey_containers_jersey_container_servlet_core//jar",
+        "@org_glassfish_jersey_core_jersey_server//jar",
+        "@org_ow2_asm_asm_debug_all//jar",
+    ],
+)
+
+java_library(
     name = "io_dropwizard_metrics_metrics_healthchecks",
     visibility = ["//visibility:public"],
     exports = [
@@ -655,6 +726,14 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@org_glassfish_hk2_hk2_utils//jar",
+    ],
+)
+
+java_library(
+    name = "org_objenesis_objenesis",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_objenesis_objenesis//jar",
     ],
 )
 
@@ -738,6 +817,14 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@org_glassfish_hk2_external_aopalliance_repackaged//jar",
+    ],
+)
+
+java_library(
+    name = "org_hamcrest_hamcrest_core",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_hamcrest_hamcrest_core//jar",
     ],
 )
 
@@ -959,6 +1046,15 @@ java_library(
 )
 
 java_library(
+    name = "junit_junit",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@junit_junit//jar",
+        "@org_hamcrest_hamcrest_core//jar",
+    ],
+)
+
+java_library(
     name = "io_dropwizard_dropwizard_util",
     visibility = ["//visibility:public"],
     exports = [
@@ -983,6 +1079,20 @@ java_library(
     visibility = ["//visibility:public"],
     exports = [
         "@io_dropwizard_metrics_metrics_core//jar",
+    ],
+)
+
+java_library(
+    name = "org_glassfish_jersey_test_framework_providers_jersey_test_framework_provider_inmemory",
+    visibility = ["//visibility:public"],
+    exports = [
+        "@org_glassfish_jersey_test_framework_providers_jersey_test_framework_provider_inmemory//jar",
+        "@junit_junit//jar",
+        "@org_glassfish_jersey_containers_jersey_container_servlet_core//jar",
+        "@org_glassfish_jersey_core_jersey_client//jar",
+        "@org_glassfish_jersey_core_jersey_server//jar",
+        "@org_glassfish_jersey_test_framework_jersey_test_framework_core//jar",
+        "@org_ow2_asm_asm_debug_all//jar",
     ],
 )
 

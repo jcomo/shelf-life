@@ -19,6 +19,7 @@ maven_jar(
     sha1 = "73ae4ab171d396103f32e392970641e985d1a845",
 )
 
+# io.dropwizard:dropwizard-testing:jar:0.9.1
 # me.jcomo:foodie:jar:1.0-SNAPSHOT
 # io.dropwizard:dropwizard-auth:jar:0.9.1
 # io.dropwizard:dropwizard-client:jar:0.9.1
@@ -60,6 +61,14 @@ maven_jar(
     name = "org_jboss_logging_jboss_logging",
     artifact = "org.jboss.logging:jboss-logging:3.2.1.Final",
     sha1 = "fedf11b3d4665a434b554a5891fe7f208f029f45",
+)
+
+# me.jcomo:foodie:jar:1.0-SNAPSHOT
+# /Users/jonathan/Developer/shelf-life/pom.xml
+maven_jar(
+    name = "net_javacrumbs_json_unit_json_unit_fluent",
+    artifact = "net.javacrumbs.json-unit:json-unit-fluent:1.7.0",
+    sha1 = "67897ba6d65fc7daa0256aab543325d9209571c0",
 )
 
 # io.dropwizard:dropwizard-metrics:jar:0.9.1
@@ -125,6 +134,13 @@ maven_jar(
     sha1 = "5ad6e38015a97ae9a60b6c2ad744ccfa9cf93a50",
 )
 
+# net.javacrumbs.json-unit:json-unit-fluent:jar:1.7.0
+maven_jar(
+    name = "net_javacrumbs_json_unit_json_unit_core",
+    artifact = "net.javacrumbs.json-unit:json-unit-core:1.7.0",
+    sha1 = "5f4f6e3783fcbd08ba07ed37873ad3f3641105cb",
+)
+
 # io.dropwizard:dropwizard-jackson:jar:0.9.1
 # com.fasterxml.jackson.module:jackson-module-afterburner:bundle:2.6.3
 # com.fasterxml.jackson.datatype:jackson-datatype-joda:bundle:2.6.3
@@ -146,6 +162,7 @@ maven_jar(
 # org.glassfish.jersey.connectors:jersey-apache-connector:jar:2.22.1
 # org.glassfish.jersey.core:jersey-server:jar:2.22.1
 # io.dropwizard:dropwizard-client:jar:0.9.1
+# org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:jar:2.22.1
 maven_jar(
     name = "org_glassfish_jersey_core_jersey_client",
     artifact = "org.glassfish.jersey.core:jersey-client:2.22.1",
@@ -206,6 +223,23 @@ maven_jar(
     sha1 = "e876a79d561e5c6207b78d347e198c8c4531a5e5",
 )
 
+# io.dropwizard:dropwizard-testing:jar:0.9.1
+# me.jcomo:foodie:jar:1.0-SNAPSHOT
+# /Users/jonathan/Developer/shelf-life/pom.xml
+maven_jar(
+    name = "org_mockito_mockito_core",
+    artifact = "org.mockito:mockito-core:1.10.19",
+    sha1 = "e8546f5bef4e061d8dd73895b4e8f40e3fe6effe",
+)
+
+# org.glassfish.jersey.test-framework:jersey-test-framework-core:jar:2.22.1
+# org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:jar:2.22.1
+maven_jar(
+    name = "org_ow2_asm_asm_debug_all",
+    artifact = "org.ow2.asm:asm-debug-all:5.0.4",
+    sha1 = "702b8525fcf81454235e5e2fa2a35f15ffc0ec7e",
+)
+
 # org.eclipse.jetty:jetty-server:jar:9.2.13.v20150730
 # org.eclipse.jetty:jetty-servlets:jar:9.2.13.v20150730
 maven_jar(
@@ -222,6 +256,14 @@ maven_jar(
     sha1 = "580688f0b8d0dd31fe33a9c6d02fa9928c45dae9",
 )
 
+# me.jcomo:foodie:jar:1.0-SNAPSHOT
+# /Users/jonathan/Developer/shelf-life/pom.xml
+maven_jar(
+    name = "io_dropwizard_dropwizard_testing",
+    artifact = "io.dropwizard:dropwizard-testing:0.9.1",
+    sha1 = "1c7d3e65075fcbe8495d475d06128bf524a0d831",
+)
+
 # io.dropwizard:dropwizard-logging:jar:0.9.1
 # ch.qos.logback:logback-classic:jar:1.1.3
 maven_jar(
@@ -230,6 +272,7 @@ maven_jar(
     sha1 = "e3c02049f2dbbc764681b40094ecf0dcbc99b157",
 )
 
+# org.glassfish.jersey.test-framework:jersey-test-framework-core:jar:2.22.1
 # org.glassfish.jersey.containers:jersey-container-servlet:jar:2.22.1
 maven_jar(
     name = "org_glassfish_jersey_containers_jersey_container_servlet_core",
@@ -279,6 +322,7 @@ maven_jar(
 # io.dropwizard:dropwizard-metrics:jar:0.9.1
 # org.slf4j:log4j-over-slf4j:jar:1.7.12
 # io.dropwizard:dropwizard-logging:jar:0.9.1
+# net.javacrumbs.json-unit:json-unit-core:jar:1.7.0 wanted version 1.7.5
 # org.slf4j:jcl-over-slf4j:jar:1.7.12
 maven_jar(
     name = "org_slf4j_slf4j_api",
@@ -288,8 +332,10 @@ maven_jar(
 
 # io.dropwizard:dropwizard-jersey:jar:0.9.1
 # org.glassfish.jersey.ext:jersey-bean-validation:jar:2.22.1
+# org.glassfish.jersey.test-framework:jersey-test-framework-core:jar:2.22.1
 # org.glassfish.jersey.containers:jersey-container-servlet-core:jar:2.22.1
 # org.glassfish.jersey.containers:jersey-container-servlet:jar:2.22.1
+# org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:jar:2.22.1
 maven_jar(
     name = "org_glassfish_jersey_core_jersey_server",
     artifact = "org.glassfish.jersey.core:jersey-server:2.22.1",
@@ -457,6 +503,15 @@ maven_jar(
     sha1 = "d2444c9c7c1923304c25f86c5ee83a79a8166205",
 )
 
+# io.dropwizard:dropwizard-testing:jar:0.9.1
+# me.jcomo:foodie:jar:1.0-SNAPSHOT wanted version 3.2.0
+# /Users/jonathan/Developer/shelf-life/pom.xml wanted version 3.2.0
+maven_jar(
+    name = "org_assertj_assertj_core",
+    artifact = "org.assertj:assertj-core:3.2.0",
+    sha1 = "eded8ad93bf57af8eff233c1751550bd40349ebb",
+)
+
 # io.dropwizard:dropwizard-core:jar:0.9.1
 maven_jar(
     name = "io_dropwizard_dropwizard_jetty",
@@ -480,6 +535,14 @@ maven_jar(
     sha1 = "c9350b65d5f040d7b7bcf4a8c456dca4c69ea081",
 )
 
+# org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:jar:2.22.1
+maven_jar(
+    name = "org_glassfish_jersey_test_framework_jersey_test_framework_core",
+    artifact = "org.glassfish.jersey.test-framework:jersey-test-framework-core:2.22.1",
+    repository = "https://maven.java.net/content/repositories/releases/",
+    sha1 = "8dec524b606f190c1c856938dde7c00296c992c0",
+)
+
 # io.dropwizard.metrics:metrics-servlets:bundle:3.1.2
 # io.dropwizard:dropwizard-core:jar:0.9.1
 maven_jar(
@@ -495,6 +558,13 @@ maven_jar(
     artifact = "org.glassfish.hk2:hk2-utils:2.4.0-b31",
     repository = "https://maven.java.net/content/repositories/releases/",
     sha1 = "2c5cb698cfec8dde859c3db854178d03bf7248a6",
+)
+
+# io.dropwizard:dropwizard-testing:jar:0.9.1
+maven_jar(
+    name = "org_objenesis_objenesis",
+    artifact = "org.objenesis:objenesis:2.2",
+    sha1 = "3fb533efdaa50a768c394aa4624144cf8df17845",
 )
 
 # me.jcomo:foodie:jar:1.0-SNAPSHOT
@@ -560,6 +630,13 @@ maven_jar(
     artifact = "org.glassfish.hk2.external:aopalliance-repackaged:2.4.0-b31",
     repository = "https://maven.java.net/content/repositories/releases/",
     sha1 = "5e7899ad02fd55f5651a5e5d1a70aee421ba2030",
+)
+
+# junit:junit:jar:4.12
+maven_jar(
+    name = "org_hamcrest_hamcrest_core",
+    artifact = "org.hamcrest:hamcrest-core:1.3",
+    sha1 = "42a25dc3219429f0e5d060061f71acb49bf010a0",
 )
 
 # redis.clients:jedis:jar:2.7.2
@@ -713,6 +790,17 @@ maven_jar(
     sha1 = "8d366839930f88fe44991f2428617e1d5d1037a6",
 )
 
+# io.dropwizard:dropwizard-testing:jar:0.9.1
+# me.jcomo:foodie:jar:1.0-SNAPSHOT
+# org.glassfish.jersey.test-framework:jersey-test-framework-core:jar:2.22.1
+# /Users/jonathan/Developer/shelf-life/pom.xml
+# org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:jar:2.22.1
+maven_jar(
+    name = "junit_junit",
+    artifact = "junit:junit:4.12",
+    sha1 = "2973d150c0dc1fefe998f834810d68f278ea58ec",
+)
+
 # io.dropwizard:dropwizard-jackson:jar:0.9.1
 # io.dropwizard:dropwizard-lifecycle:jar:0.9.1
 # io.dropwizard:dropwizard-servlets:jar:0.9.1
@@ -750,6 +838,14 @@ maven_jar(
     name = "io_dropwizard_metrics_metrics_core",
     artifact = "io.dropwizard.metrics:metrics-core:3.1.2",
     sha1 = "224f03afd2521c6c94632f566beb1bb5ee32cf07",
+)
+
+# io.dropwizard:dropwizard-testing:jar:0.9.1
+maven_jar(
+    name = "org_glassfish_jersey_test_framework_providers_jersey_test_framework_provider_inmemory",
+    artifact = "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:2.22.1",
+    repository = "https://maven.java.net/content/repositories/releases/",
+    sha1 = "7a28717e7677f491eb36956552763fb828e8f18d",
 )
 
 # com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:bundle:2.6.3
