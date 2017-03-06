@@ -1,6 +1,5 @@
-java_binary(
+java_library(
   name = "foodie",
-  main_class = "me.jcomo.foodie.FoodieApplication",
   srcs = glob(["**/*.java"]),
   deps = [
     "//stilltasty-client/src/main/java/me/jcomo/stilltasty",
@@ -12,5 +11,14 @@ java_binary(
     "//:org_mindrot_jbcrypt",
     "//:org_xerial_sqlite_jdbc",
     "//:redis_clients_jedis",
+  ],
+  visibility = ["//visibility:public"],
+)
+
+java_binary(
+  name = "app",
+  main_class = "me.jcomo.foodie.FoodieApplication",
+  runtime_deps = [
+    ":foodie",
   ],
 )
