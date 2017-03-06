@@ -1,5 +1,3 @@
-filegroup(
-  name = "test_resources",
-  srcs = glob(["src/test/resources/**/*"]),
-  visibility = ["//stilltasty_client/src/test:__subpackages__"],
-)
+load("//rules:Resources.bzl", "Resources")
+
+Resources(is_test = True)
