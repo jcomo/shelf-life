@@ -3,7 +3,7 @@ java_library(
   srcs = glob(["**/*.java"]),
   visibility = ["//visibility:public"],
   deps = [
-    "//:org_jsoup_jsoup",
-    "//:org_apache_httpcomponents_httpclient",
+    "//third_party:org_jsoup_jsoup",
+    "//third_party:org_apache_httpcomponents_httpclient",
   ],
 )
