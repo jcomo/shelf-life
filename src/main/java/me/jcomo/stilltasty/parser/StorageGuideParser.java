@@ -5,13 +5,11 @@ import me.jcomo.stilltasty.core.StorageMethod;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class StorageGuideParser implements HtmlParser<Optional<StorageGuide>> {
     public Optional<StorageGuide> parse(String html) {
@@ -26,9 +24,9 @@ public class StorageGuideParser implements HtmlParser<Optional<StorageGuide>> {
     }
 
     private String parseFoodName(Document doc) {
-        Element nameElement = doc.getElementsByClass("bigBlackHeading").first();
-        if (nameElement != null) {
-            return nameElement.text();
+        Element storageElement = doc.getElementsByClass("food-storage-container").first();
+        if (storageElement != null) {
+            return storageElement.getElementsByTag("h2").first().text();
         } else {
             return "";
         }
@@ -42,17 +40,22 @@ public class StorageGuideParser implements HtmlParser<Optional<StorageGuide>> {
     }
 
     private List<StorageMethod> parseStorageMethods(Document doc) {
-        Elements locations = doc.getElementsByClass("slicedHead");
-        Elements expirations = doc.getElementsByClass("days");
-
-        // Zip locations and expirations
-        return IntStream.range(0, Math.min(locations.size(), expirations.size()))
-                .mapToObj(i -> new StorageMethod(locations.get(i).text(), expirations.get(i).text()))
+        return doc.getElementsByClass("food-inside")
+                .stream()
+                .map(this::parseStorageMethod)
                 .collect(Collectors.toList());
     }
 
+    private StorageMethod parseStorageMethod(Element methodElement) {
+        String location = methodElement.getElementsByClass("food-storage-left").first()
+                .getElementsByTag("span").first().text();
+        String expiration = methodElement.getElementsByClass("food-storage-right").first()
+                .getElementsByTag("span").first().text();
+        return new StorageMethod(location, expiration);
+    }
+
     private List<String> parseTips(Document doc) {
-        Element tipSection = doc.getElementsByClass("tips").first();
+        Element tipSection = doc.getElementsByClass("food-tips").first();
         if (null == tipSection) {
             return new ArrayList<>();
         } else {
