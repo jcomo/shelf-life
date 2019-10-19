@@ -3,13 +3,11 @@
   "methods": [
     {
       "location": "Refrigerator",
-      "expiration": "4 days",
-      "expirationTime": 345600
+      "expiration": "4 days"
     },
     {
       "location": "Freezer",
-      "expiration": "1 month",
-      "expirationTime": 2592000
+      "expiration": "1 month"
     }
   ],
   "tips": [

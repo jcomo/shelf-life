@@ -1,5 +1,4 @@
 {
   "location": "Freezer",
-  "expiration": "1 month",
-  "expirationTime": 2592000
+  "expiration": "1 month"
 }

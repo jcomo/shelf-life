@@ -18,8 +18,10 @@ public class StillTastySerializationTest {
     private static final ObjectMapper MAPPER;
 
     static {
+        final SimpleModule module = new SimpleModule("StorageGuideSerialization");
+        module.addSerializer(new StorageGuideSerializer());
         MAPPER = Jackson.newObjectMapper();
-        MAPPER.addMixIn(StorageGuide.class, StorageGuideMixin.class);
+        MAPPER.registerModule(module);
     }
 
     @Test
