@@ -1,7 +1,7 @@
 package me.jcomo.foodie.resources;
 
 import io.dropwizard.testing.junit.ResourceTestRule;
-import me.jcomo.foodie.api.SearchRequest;
+import me.jcomo.foodie.core.SearchRequest;
 import me.jcomo.stilltasty.client.StillTastyClient;
 import me.jcomo.stilltasty.core.SearchResult;
 import org.junit.After;
@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
 

@@ -28,28 +28,6 @@ public class StorageGuide {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        StorageGuide that = (StorageGuide) o;
-
-        if (!food.equals(that.food)) return false;
-        if (storageMethods != null ? !storageMethods.equals(that.storageMethods) : that.storageMethods != null)
-            return false;
-        return !(storageTips != null ? !storageTips.equals(that.storageTips) : that.storageTips != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = food.hashCode();
-        result = 31 * result + (storageMethods != null ? storageMethods.hashCode() : 0);
-        result = 31 * result + (storageTips != null ? storageTips.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "StorageGuide{" +
                 "food='" + food + '\'' +

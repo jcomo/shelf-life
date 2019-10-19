@@ -6,5 +6,5 @@ The service is available via heroku at `https://shelf-life-api.herokuapp.com`.
 
 ### Routes
 
- * `/search` searches for food guides using the `q` query string paramter
- * `/guides/:guideId` returns a food guide for the specific item
+* `/search` searches for food guides using the `q` query string paramter
+* `/guides/:guideId` returns a food guide for the specific item

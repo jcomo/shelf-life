@@ -54,10 +54,6 @@ public class StorageMethod {
     }
 
     private int endIndexOfFirstNumber() {
-        if (null == expiration || "".equals(expiration) || !isDigit(expiration.charAt(0))) {
-            return -1;
-        }
-
         for (int i = 0; i < expiration.length(); i++) {
             char c = expiration.charAt(i);
             if (!isDigit(c)) {
@@ -66,25 +62,6 @@ public class StorageMethod {
         }
 
         return -1;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        StorageMethod that = (StorageMethod) o;
-
-        if (location != null ? !location.equals(that.location) : that.location != null) return false;
-        return !(expiration != null ? !expiration.equals(that.expiration) : that.expiration != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = location != null ? location.hashCode() : 0;
-        result = 31 * result + (expiration != null ? expiration.hashCode() : 0);
-        return result;
     }
 
     @Override

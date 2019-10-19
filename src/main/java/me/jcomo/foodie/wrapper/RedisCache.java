@@ -3,11 +3,15 @@ package me.jcomo.foodie.wrapper;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-public class PrefixedRedisCache implements Cache<String, String> {
+public class RedisCache implements Cache<String, String> {
     private final JedisPool pool;
     private final String keyPrefix;
 
-    public PrefixedRedisCache(JedisPool pool, String keyPrefix) {
+    public RedisCache(JedisPool pool) {
+        this(pool, "");
+    }
+
+    public RedisCache(JedisPool pool, String keyPrefix) {
         this.pool = pool;
         this.keyPrefix = keyPrefix;
     }
@@ -23,13 +27,6 @@ public class PrefixedRedisCache implements Cache<String, String> {
             String prefixedKey = prefixedKey(key);
             jedis.set(prefixedKey, value);
             jedis.expire(prefixedKey, ttl);
-        }
-    }
-
-    @Override
-    public void delete(String key) {
-        try (Jedis jedis = pool.getResource()) {
-            jedis.del(prefixedKey(key));
         }
     }
 

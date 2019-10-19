@@ -2,12 +2,11 @@ package me.jcomo.stilltasty.core;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional;
 
 import static me.jcomo.stilltasty.core.Humanize.titleize;
 
 public class SearchResult {
-    private Integer id;
+    private int id = 0;
     private String name;
     private URL url;
 
@@ -21,17 +20,13 @@ public class SearchResult {
         }
     }
 
-    private Integer pluckItemId() {
+    private int pluckItemId() {
         String[] urlParts = url.toString().split("/");
         String itemId = urlParts[urlParts.length - 1];
-        try {
-            return Integer.parseInt(itemId);
-        } catch (NumberFormatException e) {
-            return null;
-        }
+        return Integer.parseInt(itemId);
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -50,15 +45,14 @@ public class SearchResult {
 
         SearchResult that = (SearchResult) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return url != null ? url.equals(that.url) : that.url == null;
-
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
