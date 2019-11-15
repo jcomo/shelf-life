@@ -1,148 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>StillTasty.com | Search Results :: steak</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="google-site-verification" content="71oFiAyssPFcZLaKH-ZCs9tbLr5DKP6aSZRfalg0adM" />
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-	<meta name="keywords" content="StillTasty.com | Search Results"/>
-	<meta name="description" content="StillTasty.com | Search Results"/>
-
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-	<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-
+	<meta name="keywords" content="StillTasty.com | Search Results" />
+	<meta name="description" content="StillTasty.com | Search Results" />
+	
+	<title>StillTasty.com | Search Results :: steak</title>
+	
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" /> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	
 	<link rel="stylesheet" href="/css/frontend/style.css"/>
 	<link rel="stylesheet" href="/css/frontend/bootstrap-select.css"/>
 
-	<!-- -->
+<!-- BEGIN: Header Bidding -->
+<script type="text/javascript" async src="https://www.stilltasty.com/js/frontend/prebid.js"></script>
+<script type="text/javascript">
+    var adsStart = (new Date()).getTime();
+    function detectWidth() {
+        return window.screen.width || window.innerWidth || window.document.documentElement.clientWidth || Math.min(window.innerWidth, window.document.documentElement.clientWidth) || window.innerWidth || window.document.documentElement.clientWidth || window.document.getElementsByTagName('body')[0].clientWidth;
+    }
+    var TIMEOUT = 1000;
+  
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+    var adUnits = adUnits || [];
+   
+    var mobileBreakSize = 768;
+    var device = "desktop";
+    if(detectWidth()<mobileBreakSize) device = "mobile";
+    function initAdServer() {
+        if (pbjs.initAdserverSet) return;
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        pbjs.initAdserverSet = true;
+    };
+    pbjs.timeout = setTimeout(initAdServer, TIMEOUT);
+    pbjs.timeStart = adsStart;
+    pbjs.device = device;
+    var dfpNetwork = '4231475';
+    // START: Defining Adunits
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_728x90_desktop_ATF',
+            size: [[728,90]],
+            code: 'div-gpt-ad-StillTasty_ROS_728x90_desktop_ATF',
+            device: ['desktop'], // display only on device
+            assignToVariableName: false // false if not in use
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_728x90_desktop_BTF',
+            size: [[728,90]],
+            code: 'div-gpt-ad-StillTasty_ROS_728x90_desktop_BTF',
+            device: ['desktop'], // display only on device
+            assignToVariableName: false // false if not in use
+        });    
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_300x60_300x250_160x600_120x600_desktop_ATF',
+            size: [[300,600],[300,250],[160,600],[120,600]],
+            code: 'div-gpt-ad-StillTasty_ROS_300x60_300x250_160x600_120x600_desktop_ATF',
+            device: ['desktop'], // display only on device
+            assignToVariableName: false // false if not in use
+        }); 
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_728x90_Adhesion_Bottom_desktop_ATF',
+            size: [[728,90]],
+            code: 'div-gpt-ad-StillTasty_ROS_728x90_Adhesion_Bottom_desktop_ATF',
+            device: ['desktop'], // display only on device
+            assignToVariableName: false // false if not in use
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_300x250_mobile_ATF',
+            size: [[300,250]],
+            code: 'div-gpt-ad-StillTasty_ROS_300x250_mobile_ATF',
+            device: ['mobile'], // display only on device
+            assignToVariableName: false // false if not in use
+        });
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_300x250_mobile_BTF',
+            size: [[300,250]],
+            code: 'div-gpt-ad-StillTasty_ROS_300x250_mobile_BTF',
+            device: ['mobile'], // display only on device
+            assignToVariableName: false // false if not in use
+        });
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'StillTasty_ROS_320x50_mobile_ATF_Sticky_Bottom',
+            size: [[320,50]],
+            code: 'div-gpt-ad-StillTasty_ROS_320x50_mobile_ATF_Sticky_Bottom',
+            device: ['mobile'], // display only on device
+            assignToVariableName: false // false if not in use
+        });                                                                        
+    // END: Defining Adunits
+    for (var i = 0, len = adUnits.length; i < len; i++) {
+        if(adUnits[i].device.indexOf(device) === -1) {adUnits[i].display = false; continue;}
+        adUnits[i].display = true;      
+    }
+    googletag.cmd.push(function() {
+      if(adUnits){
+        var dfpSlots = [];
+        for (var i = 0, len = adUnits.length; i < len; i++) {
+            if(!adUnits[i].display) continue;
+          dfpSlots[i] = googletag.defineSlot('/'+adUnits[i].network+'/'+adUnits[i].adunit, adUnits[i].size, adUnits[i].code).addService(googletag.pubads());
+          if(adUnits[i].assignToVariableName && (adUnits[i].assignToVariableName !== null)) window[adUnits[i].assignToVariableName] = dfpSlots[i];
+        }
+      }
+    });
+  
+    googletag.cmd.push(function() {
+       
+        // Header Bidding Targeting
+        pbjs.que.push(function() {pbjs.setTargetingForGPTAsync();});
+        // Init DFP
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
 
+<!-- END: Header Bidding -->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122999625-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-122999625-1');
+    </script>
 
-<script type="text/javascript" src="http://cdn.grmtas.com/pub/ga_pub_594.js"></script>
-
-	<!-- Quantcast Tag -->
-	<script type="text/javascript">
-	var _qevents = _qevents || [];
-
-	(function() {
-	var elem = document.createElement('script');
-	elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-	elem.async = true;
-	elem.type = "text/javascript";
-	var scpt = document.getElementsByTagName('script')[0];
-	scpt.parentNode.insertBefore(elem, scpt);
-	})();
-
-	_qevents.push({
-	qacct:"p-KJbVBaJFE_tN-"
-	});
-	</script>
-
-	<noscript>
-	<div style="display:none;">
-	<img src="//pixel.quantserve.com/pixel/p-KJbVBaJFE_tN-.gif" border="0" height="1" width="1" alt="Quantcast"/>
-	</div>
-	</noscript>
-	<!-- End Quantcast tag -->
-
-	<!-------------------------------------------->
-	<!---Added on 15-April-17 -------------------->
-	<!-------------------------------------------->
-
-	        <style type="text/css">
-		.adnxs-mobile { display:none;}.adnxs-mobile, .adnxs-desktop { text-align:center;}
-		@media only screen and (max-width: 980px) { .adnxs-desktop { display:block;} }
-		@media only screen and (max-width: 640px) { .adnxs-desktop { display:none;}.adnxs-mobile { display:block;}}
-	    </style>
-
+		
 </head>
 
 
 <body>
-
-<header>
-			<div class="header-container">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-3 col-sm-4 col-md-3 col-xs-12">
-							<div class="logo">
-								<a href="http://stilltasty.com/"><img src="http://stilltasty.com/img/frontend/logo.jpg" alt="Logo"/></a>
+    <header>
+	<div class="header-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-sm-4 col-md-3 col-xs-12">
+					<div class="logo">
+						<a href="https://www.stilltasty.com/"><img src="https://www.stilltasty.com/img/frontend/logo.jpg" alt="Logo"/></a>
+					</div>
+					<div class="mobile-logo">
+						<a href="https://www.stilltasty.com/"><img src="https://www.stilltasty.com/img/frontend/logo_mobile.png" alt="Logo"/></a>
+					</div>
+				</div>
+				<div class="col-lg-9 col-sm-8 col-md-9 col-xs-12">
+					<div class="google-adds" style="overflow: hidden;">							
+						
+								
+<!-- StillTasty_ROS_728x90_desktop_ATF -->
+							<div id='div-gpt-ad-StillTasty_ROS_728x90_desktop_ATF'>
+								<script>
+								var displayOnDevices = ['desktop'];
+								if((displayOnDevices.indexOf(device) >= 0)) {
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-StillTasty_ROS_728x90_desktop_ATF'); });
+								}
+								</script>
 							</div>
-							<div class="mobile-logo">
-								<a href="http://stilltasty.com/"><img src="http://stilltasty.com/img/frontend/logo_mobile.png" alt="Logo"/></a>
-							</div>
-						</div>
-						<div class="col-lg-9 col-sm-8 col-md-9 col-xs-12">
-
-							<div class="google-adds" style="overflow: hidden;">
-
-
-<!--------------------->
-    <!-- 728X90  --ATF -->
-    <div id="ga_1302261">
-       <script type="text/javascript">
-          apntag.anq.push(function() {
-             apntag.showTag('ga_1302261');
-          });
-       </script>
-    </div>
-
-
-
-
-
-
-
-							</div>
-
+	
+														
+					</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-sm-7 col-md-8 col-xs-12 rightpadding">
+					<div class="menu_container">	
+						<div class="menu-icon-container">
+							<div class="menu-icon"></div>
+						</div>			
+						<div class="menu-list clearfix">
+							<ul>
+								<li class="active"><span><a href="https://www.stilltasty.com/">Home</a></span></li>
+								<li><span><a href="https://www.stilltasty.com/searchitems/searchpage">Keep It <br> or Toss It?</a></span></li>
+								<li><span><a href="https://www.stilltasty.com/questions">Your Questions <br> Answered</a></span></li>
+								<li><span><a href="https://www.stilltasty.com/articles">Shelf Talk</a></span></li>
+								<li><span><a href="https://www.stilltasty.com/staticpages/view/Press">StillTasty <br> In the News</a></span></li>
+								<li class="mobilesocialicons"><span><a href="https://www.stilltasty.com/staticpages/view/About Us"> About Us </a></span></li>
+								<li class="mobilesocialicons"><span><a href="https://www.stilltasty.com/Search?q=stilltasty">Search The Site</a></span></li>
+								<li class="mobilesocialicons">
+								<span>
+								<a target="_blank" href="https://twitter.com/AskStillTasty"><img src="https://www.stilltasty.com/img/frontend/twitter.jpg" /></a>
+								</span>
+								
+								<a target="_blank" href="http://www.facebook.com/pages/StillTasty/143082872368530?v=wall&ref=sgm#!/pages/StillTasty/143082872368530?v=wall&ref=sgm"><img src="https://www.stilltasty.com/img/frontend/facebook.jpg" /></a>
+								</span>
+								</li>
+							</ul>
 						</div>
 					</div>
-				<div class="row">
-						<div class="col-lg-8 col-sm-7 col-md-8 col-xs-12 rightpadding">
-							<div class="menu_container">
-									<div class="menu-icon-container">
-										<div class="menu-icon"></div>
-									</div>
-									<div class="menu-list clearfix">
-										<ul>
-											<li class="active"><span><a href="http://stilltasty.com/">Home</a></span></li>
-											<li><span><a href="http://stilltasty.com/searchitems/searchpage">Keep It <br> or Toss It?</a></span></li>
-											<li><span><a href="http://stilltasty.com/questions">Your Questions <br> Answered</a></span></li>
-											<li><span><a href="http://stilltasty.com/articles">Shelf Talk</a></span></li>
-											<li><span><a href="http://stilltasty.com/staticpages/view/Press">StillTasty <br> In the News</a></span></li>
-											<li class="mobilesocialicons"><span><a href="http://stilltasty.com/staticpages/view/About Us"> About Us </a></span></li>
-											<li class="mobilesocialicons"><span><a href="http://stilltasty.com/Search?q=stilltasty">Search The Site</a></span></li>
-											<li class="mobilesocialicons">
-											<span>
-											<a target="_blank" href="https://twitter.com/AskStillTasty"><img src="http://stilltasty.com/img/frontend/twitter.jpg" /></a>
-											</span>
-
-											<a target="_blank" href="http://www.facebook.com/pages/StillTasty/143082872368530?v=wall&ref=sgm#!/pages/StillTasty/143082872368530?v=wall&ref=sgm"><img src="http://stilltasty.com/img/frontend/facebook.jpg" /></a>
-											</span>
-											</li>
-										</ul>
-									</div>
-							</div>
+				</div>
+				<div class="col-lg-4 col-sm-5 col-md-4 col-xs-12 leftpadding">
+					<div class="right-section clearfix">
+						<div class="social-icons clearfix">
+							<ul>
+								<li><a target="_blank" href="https://twitter.com/AskStillTasty"><img src="https://www.stilltasty.com/img/frontend/twitter.jpg" /></a></li>
+								<li><a target="_blank" href="http://www.facebook.com/pages/StillTasty/143082872368530?v=wall&ref=sgm#!/pages/StillTasty/143082872368530?v=wall&ref=sgm"><img src="https://www.stilltasty.com/img/frontend/facebook.jpg" /></a></li>
+							</ul>
 						</div>
-						<div class="col-lg-4 col-sm-5 col-md-4 col-xs-12 leftpadding">
-							<div class="right-section clearfix">
-								<div class="social-icons clearfix">
-									<ul>
-										<li><a target="_blank" href="https://twitter.com/AskStillTasty"><img src="http://stilltasty.com/img/frontend/twitter.jpg" /></a></li>
-										<li><a target="_blank" href="http://www.facebook.com/pages/StillTasty/143082872368530?v=wall&ref=sgm#!/pages/StillTasty/143082872368530?v=wall&ref=sgm"><img src="http://stilltasty.com/img/frontend/facebook.jpg" /></a></li>
-									</ul>
-								</div>
-
-								<style>
+						<style>
 .mbhide {
     cursor: pointer !important;
     height: 20px;
@@ -154,284 +232,250 @@
 }
 </style>
 <div class="social-icons srchbox">
-	<form action="http://stilltasty.com/Search" class="search">
+	<form action="https://www.stilltasty.com/Search" class="search">
 		<input class="q" name="q" type="text" placeholder="Search the site" value="" />
 		<input type="button" onclick="$(this).closest('form').submit();" class="searchbtn"/>
-	</form>
+	</form>	
 </div>
 <div class="mobile-search">
 	<!--
-	<form action="http://stilltasty.com/Search" class="search">
+	<form action="https://www.stilltasty.com/Search" class="search">
 		<input class="q" name="q" type="text" placeholder="Search the site" value="" />
 		<input type="button" class="mbhide" onclick="$(this).closest('form').submit();">
-	</form>
+	</form>	
 	-->
 	
-	<form action="http://stilltasty.com/searchitems/search" class="search" method="post">
+	<form action="https://www.stilltasty.com/searchitems/search" class="search" method="post">
 		<input class="q" name="search" type="text" placeholder="Search food items" value="" />
 		<input type="button" class="mbhide" onclick="$(this).closest('form').submit();">
-	</form>
+	</form>	
 </div>
-
-							</div>
-						</div>
+					</div>
 				</div>
-			</div>
+			</div>	
 		</div>
+	</div>		
 </header>
-
 <div class="container">
 	<div class="divider"></div>
-</div>    	<style>
-
-</style>
-
-
-<section class="search-result search_list_container">
+</div>    	<section class="search-result search_list_container">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mobile-padding-space">
-					<div class="search-head">
-						<h1>SEARCH RESULTS</h1>
-					</div>
+				<div class="search-head">
+					<h1>SEARCH RESULTS</h1>
+					<!-- StillTasty_ROS_300x250_mobile_ATF -->
+						<div id='div-gpt-ad-StillTasty_ROS_300x250_mobile_ATF'>
+							<script>
+								var displayOnDevices = ['mobile'];
+								if((displayOnDevices.indexOf(device) >= 0)) 
+									{
+										googletag.cmd.push(function() { googletag.display('div-gpt-ad-StillTasty_ROS_300x250_mobile_ATF'); });
+									}
+							</script>
+						</div>				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-8 col-sm-8 col-md-8 col-xs-12 mobile-padding-space colpadding">
-								<div class="search-border">
-
-					<div class="how-long"><h1>Condiments & Oils</h1><div class="search-list"><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18405">STEAK SAUCE, COMMERCIALLY BOTTLED - OPENED</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18406">STEAK SAUCE, COMMERCIALLY BOTTLED - UNOPENED</a></p></div></div><div class="how-long"><h1>Fish & Shellfish</h1><div class="search-list"><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18305">&#83&#72&#65&#82&#75&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#70&#82&#69&#83&#72&#44&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18306">SHARK STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18307">&#83&#72&#65&#82&#75&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#80&#85&#82&#67&#72&#65&#83&#69&#68&#32&#67&#79&#77&#77&#69&#82&#67&#73&#65&#76&#76&#89&#32&#70&#82&#79&#90&#69&#78&#44&#32&#82&#65&#87</a></p></div></div><div class="how-long"><h1>Herbs & Spices</h1><div class="search-list"><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18407">&#83&#84&#69&#65&#75&#32&#83&#69&#65&#83&#79&#78&#73&#78&#71&#32&#66&#76&#69&#78&#68&#44&#32&#68&#82&#73&#69&#68&#44&#32&#67&#79&#77&#77&#69&#82&#67&#73&#65&#76&#76&#89&#32&#66&#79&#84&#84&#76&#69&#68&#32&#79&#82&#32&#80&#85&#82&#67&#72&#65&#83&#69&#68&#32&#73&#78&#32&#66&#85&#76&#75&#32&#8212&#32&#85&#78&#79&#80&#69&#78&#69&#68&#32&#79&#82&#32&#79&#80&#69&#78&#69&#68</a></p></div></div><div class="how-long"><h1>Meat & Poultry</h1><div class="search-list"><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/16502">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, PORTERHOUSE, T-BONE, FILET MIGNON ) - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/16503">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, PORTERHOUSE, T-BONE, FILET MIGNON STEAKS ) — PURCHASED COMMERCIALLY FROZEN, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/16504">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, SHOULDER, PORTERHOUSE, T-BONE, FILET MIGNON ) - COOKED</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/16531">BISON STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/16532">&#66&#73&#83&#79&#78&#32&#83&#84&#69&#65&#75&#44&#32&#65&#76&#76&#32&#67&#85&#84&#83&#32&#8212&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18926">&#72&#65&#77&#32&#83&#84&#69&#65&#75&#44&#32&#83&#77&#79&#75&#69&#68&#32&#8212&#32&#67&#79&#79&#75&#69&#68&#32&#65&#84&#32&#72&#79&#77&#69&#44&#32&#76&#69&#70&#84&#79&#86&#69&#82&#83</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/17272">GOAT, ROAST/ STEAK/ CHOPS - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/17384">HAM STEAK, SMOKED  - PURCHASED COMMERCIALLY WRAPPED</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/17505">&#76&#65&#77&#66&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/17506">LAMB STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/17671">MEAT PIE, FRESHLY BAKED (INCLUDING STEAK AND KIDNEY PIE, TOURTIERE) </a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18061">&#80&#79&#82&#75&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18062">PORK STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18619">VEAL STEAK — COOKED</a></p><p class="srclisting"><a href="http://stilltasty.com/fooditems/index/18620">VEAL STEAK - FRESH, RAW</a></p></div></div>
-						
-
-
-
-				</div>
-
-                <!--------------->
-                <div class="right-add-mobile">
-				<!-- 300x250 (mobile)---BTF 1 -->
-                    <div id="ga_11205920">
-                       <script type="text/javascript">
-                          apntag.anq.push(function() {
-                             apntag.showTag('ga_11205920');
-                          });
-                       </script>
-                    </div>
-                </div>
-                <!--------------->
-
-			</div>
+									<div class="search-border">
+							<div class="how-long"><h1>Condiments & Oils</h1><div class="search-list"><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18405">STEAK SAUCE, COMMERCIALLY BOTTLED - OPENED</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18406">STEAK SAUCE, COMMERCIALLY BOTTLED - UNOPENED</a></p></div></div><div class="how-long"><h1>Fish & Shellfish</h1><div class="search-list"><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18305">&#83&#72&#65&#82&#75&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#70&#82&#69&#83&#72&#44&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18306">SHARK STEAK - FRESH, RAW</a></p></div></div><div class="how-long"><h1>Herbs & Spices</h1><div class="search-list"><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18407">STEAK SEASONING BLEND, DRIED, COMMERCIALLY BOTTLED OR PURCHASED IN BULK — UNOPENED OR OPENED</a></p></div></div><div class="how-long"><h1>Meat & Poultry</h1><div class="search-list"><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18926">&#72&#65&#77&#32&#83&#84&#69&#65&#75&#44&#32&#83&#77&#79&#75&#69&#68&#32&#8212&#32&#67&#79&#79&#75&#69&#68&#32&#65&#84&#32&#72&#79&#77&#69&#44&#32&#76&#69&#70&#84&#79&#86&#69&#82&#83</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/17505">&#76&#65&#77&#66&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18061">&#80&#79&#82&#75&#32&#83&#84&#69&#65&#75&#32&#8212&#32&#67&#79&#79&#75&#69&#68</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/16502">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, PORTERHOUSE, T-BONE, FILET MIGNON ) - FRESH, RAW</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/16503">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, PORTERHOUSE, T-BONE, FILET MIGNON STEAKS ) — PURCHASED COMMERCIALLY FROZEN, RAW</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/16504">BEEF STEAK, ALL CUTS (INCLUDING CHUCK, SIRLOIN, FLANK, RIB EYE, STRIP, TENDERLOIN, ROUND, SHOULDER, PORTERHOUSE, T-BONE, FILET MIGNON ) - COOKED</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/17384">HAM STEAK, SMOKED  - PURCHASED COMMERCIALLY WRAPPED</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/17506">LAMB STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/17671">MEAT PIE, FRESHLY BAKED (INCLUDING STEAK AND KIDNEY PIE, TOURTIERE) </a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18062">PORK STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18620">VEAL STEAK - FRESH, RAW</a></p><p class="srclisting"><a href="https://www.stilltasty.com/fooditems/index/18619">VEAL STEAK — COOKED</a></p></div></div>			</div>	
+						<div class="questions-answered-container red_bg">
+							<h2 class="browse-shelf">Your Questions Answered</h2>
+							<div class="questions-answered clearfix">
+								<div class="question-left-image">
+									<a href="https://www.stilltasty.com/Questions"><img src="https://www.stilltasty.com/img/frontend/faq.biggif.gif"/></a>
+								</div>
+								<div class="question-right-text">
+									<ul>
+										<li><a href="/Questions/index/209">How Long Can Cooked Steak Be Left Out at Room Temperature?</a></li><li><a href="/Questions/index/213">How Long Can You Leave Marinated Steak in the Fridge?</a></li><li><a href="/Questions/index/64">Is it OK to Thaw Steak on the Counter?</a></li><li><a href="/Questions/index/129">Is Frozen Steak Still OK if the Packaging Has Torn?</a></li><li><a href="/Questions/index/1">Is it Safe to Refreeze Thawed Steak ?</a></li><li><a href="/Questions/index/184">How Long Does Thawed Steak Last in the Fridge? </a></li><li><a href="/Questions/index/20">Should You Eat Steak That&#039;s Turning Brown?</a></li>									</ul>
+									<!-- <a href="https://www.stilltasty.com/Questions" class="more-questions">More Questions  >></a> -->
+								</div>
+							</div>
+						</div>
+				
 			
-			
-<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 lefthalfpadding">
+			<!-- StillTasty_ROS_300x250_mobile_ATF -->
+						<div id='div-gpt-ad-StillTasty_ROS_300x250_mobile_ATF'>
+							<script>
+								var displayOnDevices = ['mobile'];
+								if((displayOnDevices.indexOf(device) >= 0)) 
+									{
+										googletag.cmd.push(function() { googletag.display('div-gpt-ad-StillTasty_ROS_300x250_mobile_ATF'); });
+									}
+							</script>
+						</div>			
+				
+		</div>
+		<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 lefthalfpadding">
 	<h1 class="tips-heading">
 	<p>Today&#39;s Tips</p>
 	</h1>
-					<div class="today-tips  clearfix">
-				<div class="image-left">
-					<a href="http://www.stilltasty.com/fooditems/index/16577"><img src="http://stilltasty.com/img/tipsheetimg/thumbnails/tips_Blueberries Tipsheet1500670563.jpg" /></a>
-
-				</div>
-				<div class="text-right">
-					<a href="http://www.stilltasty.com/fooditems/index/16577"><h3><p>Now in Season: Blueberries</p>
+							<div class="today-tips  clearfix" style="margin-bottom: 10px;">	
+						<div class="image-left">
+							<a href="https://www.stilltasty.com/Articles/view/75">
+								<img src="https://www.stilltasty.com/img/tipsheetimg/thumbnails/tips_Vegetables- Tipsheet1507301496.jpg"/>
+							</a>
+						</div>
+						<div class="text-right">
+							<a href="https://www.stilltasty.com/Articles/view/75"><h3><p>Long-Lasting Produce</p>
 </h3></a>
-					<a href="http://www.stilltasty.com/fooditems/index/16577"><span><p>Keep them fresh.</p>
+							<a href="https://www.stilltasty.com/Articles/view/75"><span><p>7 popular choices</p>
 </span></a>
-				</div>
-			</div>
-					<div class="today-tips second clearfix">
-				<div class="image-left">
-					<a href="http://www.stilltasty.com/questions/index/211/page:1"><img src="http://stilltasty.com/img/tipsheetimg/thumbnails/tips_YQA- Tipsheet21500671867.jpg" /></a>
-
-				</div>
-				<div class="text-right">
-					<a href="http://www.stilltasty.com/questions/index/211/page:1"><h3><p>Your Questions Answered</p>
+						</div>
+					</div>
+							<div class="today-tips second clearfix" style="margin-bottom: 10px;">	
+						<div class="image-left">
+							<a href="https://www.stilltasty.com/questions/index/151/page:1">
+								<img src="https://www.stilltasty.com/img/tipsheetimg/thumbnails/tips_YQA- Tipsheet21500671867.jpg"/>
+							</a>
+						</div>
+						<div class="text-right">
+							<a href="https://www.stilltasty.com/questions/index/151/page:1"><h3><p>Your Questions Answered</p>
 </h3></a>
-					<a href="http://www.stilltasty.com/questions/index/211/page:1"><span><p>Leaving chicken out</p>
+							<a href="https://www.stilltasty.com/questions/index/151/page:1"><span><p>Keeping thawed ground beef</p>
 </span></a>
-				</div>
+						</div>
+					</div>
+					<!------------------------------------------------------------->
+			<!------ For desktop ------------------------------------------>	
+			<!------------------------------------------------------------->
+		
+			<!----------------------------------------->
+			<!-- CONDITION FOR TEST ADS 6-7-2017 ------>
+							<!-- StillTasty_ROS_300x60_300x250_160x600_120x600_desktop_ATF -->
+						<div id='div-gpt-ad-StillTasty_ROS_300x60_300x250_160x600_120x600_desktop_ATF'>
+							<script>
+								var displayOnDevices = ['desktop'];
+								if((displayOnDevices.indexOf(device) >= 0)) 
+									{
+										googletag.cmd.push(function() { googletag.display('div-gpt-ad-StillTasty_ROS_300x60_300x250_160x600_120x600_desktop_ATF'); });
+									}
+							</script>
+						</div>	
+		<!------------------------------------------------------------->
+		<!---- For Mobile --------------------------------------------->	
+		<!------------------------------------------------------------->
+		
+			<div class="right-add-mobile">	
 			</div>
-
-		<!------------------------------------------------------------->
-		<!------ For desktop ------------------------------------------>
-		<!------------------------------------------------------------->
-
-
-		<!----------------------------------------->
-		<!-- CONDITION FOR TEST ADS 6-7-2017 ------>
-				    <div class="right-add" style="overflow: hidden;">
-			<!-- 300x600 --ATF -->
-            <div id="ga_1302262">
-               <script type="text/javascript">
-                  apntag.anq.push(function() {
-                     apntag.showTag('ga_1302262');
-                  });
-               </script>
-            </div>
-		</div>
-
-
-
-			
-
-		<!------------------------------------------------------------->
-		<!---- For Mobile --------------------------------------------->
-		<!------------------------------------------------------------->
-
-					<div class="right-add-mobile">
-
-			</div>
-			
-
-
-</div>
-		</div>
-
-	</div>
-</section>
-
-<script>
-$(document).ready(function(){
-	alert("test");
-});
-</script>
-    
+		
+</div></section>    
     <div class="container">
 	<footer>
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 				<div class="footer-menu">
 					<ul>
-						<li><a href="http://stilltasty.com/Staticpages/view/About Us">About Us</a></li>
-						<li><a href="http://stilltasty.com/Staticpages/view/Terms of Use">Terms of Use</a></li>
-						<li><a href="http://stilltasty.com/Staticpages/view/Privacy Policy">Privacy Policy</a></li>
-						<li><a href="http://stilltasty.com/Fooditems/food_storage_info">Our Sources</a></li>
-						<li><a href="http://stilltasty.com/Staticpages/view/Contact Us">Contact Us</a></li>
-						<li><a href="http://stilltasty.com/Staticpages/view/Press">Press</a></li>
+						<li><a href="https://www.stilltasty.com/Staticpages/view/About Us">About Us</a></li>
+						<li><a href="https://www.stilltasty.com/Staticpages/view/Terms of Use">Terms of Use</a></li>
+						<li><a href="https://www.stilltasty.com/Staticpages/view/Privacy Policy">Privacy Policy</a></li>
+						<li><a href="https://www.stilltasty.com/Fooditems/food_storage_info">Our Sources</a></li>
+						<li><a href="https://www.stilltasty.com/Staticpages/view/Contact Us">Contact Us</a></li>
+						<li><a href="https://www.stilltasty.com/Staticpages/view/Press">Press</a></li>
 					</ul>
 				</div>
 				<div class="footer-copyright">
-					<p>Reproduction in whole or in part without written permission is strictly prohibited. © Copyright 2017 StillTasty LLC. All rights reserved.</p>
+					<p>Reproduction in whole or in part without written permission is strictly prohibited. © Copyright 2019 StillTasty LLC. All rights reserved.</p>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</footer>
 </div>
 
-<!--- ADs Code for all pages Desktop/Tablet ---------------->
-<div class="google-adds" style="text-align: center;">
 
+<!--- ADs Code for all pages Desktop/Tablet ---------------->
+<div class="google-adds" style="text-align: center; margin-top:90px;">  
     <!----------------------------------------->
     <!-- CONDITION FOR TEST ADS 6-7-2017 ------>
     <!----------------------------------------->
-
-    <!-- 728X90  --BTF -->
-    <div id="ga_1304361">
-       <script type="text/javascript">
-          apntag.anq.push(function() {
-             apntag.showTag('ga_1304361');
-          });
-       </script>
-    </div>
-
-        <!--END CONDITION FOR TEST ADS 6-7-2017 --->
+    	
+				
+    <!--END CONDITION FOR TEST ADS 6-7-2017 --->
     <!----------------------------------------->
-</div>
+</div>    
 <!--- EMS ADs Code for Desktop/Tablet ---------------------->
 
-<!--- ADs Code for all pages Mobile (fix footer) ---------------->
-<div class="right-add-mobile">
 
-    
+<!--<div class="space-mobile"></div>-->
+
+<!--- ADs Code for all pages Mobile (fix footer) ---------------->
+<div class="right-add-mobile" style="position:fixed; z-index:99999; width:100%;bottom:0;">
+<style type="text/css">body{ margin-bottom: 50px!important; }</style>
     <!----------------------------------------->
     <!-- CONDITION FOR TEST ADS 6-7-2017 ------>
     <!----------------------------------------->
-
-    <!-- 300x250 (mobile)---Sticky Bottom -->
-    <!-- BEGIN JS TAG -  < - DO NOT MODIFY -->
-    <div style="position:fixed; bottom:0; z-index:99999; width:100%; text-align:center;">
-    <style type="text/css">body{ margin-bottom: 50px!important; }</style>
-    <div id="ga_11205909">
-       <script type="text/javascript">
-          apntag.anq.push(function() {
-             apntag.showTag('ga_11205909');
-          });
-       </script>
-    </div>
-    </div>
-    
-        <!--END CONDITION FOR TEST ADS 6-7-2017 --->
+    			<!-- StillTasty_ROS_320x50_mobile_ATF_Sticky_Bottom -->
+					<div id='div-gpt-ad-StillTasty_ROS_320x50_mobile_ATF_Sticky_Bottom'>
+						<script>
+							var displayOnDevices = ['desmobilektop'];
+							if((displayOnDevices.indexOf(device) >= 0)) 
+								{
+									googletag.cmd.push(function() { googletag.display('div-gpt-ad-StillTasty_ROS_320x50_mobile_ATF_Sticky_Bottom'); });
+								}
+						</script>
+					</div>	        <!--END CONDITION FOR TEST ADS 6-7-2017 --->
     <!----------------------------------------->
-    
 </div>
 <!-- END TAG -->
 
+
+
 <!--- END ADs Code for all pages Mobile (fix footer) ------------>
-
-
-    <div class="right-add-mobile">
-        <!-- 300x250 (mobile)---BTF 2 -->
-        <div id="ga_11205933">
-           <script type="text/javascript">
-              apntag.anq.push(function() {
-                 apntag.showTag('ga_11205933');
-              });
-           </script>
-        </div>
-    </div>
-
+			
+    
 	<!---Added on 15-April-17 -------------------->
 	<!-------------------------------------------->
-
+	
 	<!----END Added on 15-April-17 -------------------------->
-	<!-------------------------------------------->
-
-
+	<!-------------------------------------------->			
+				
+				
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
 		$('.menu-icon-container').click(function()
-		{ $('.menu-list').slideToggle();
+		{ $('.menu-list').slideToggle();	
 		});
 	});
 	</script>
-
+	
 	<script>
 	$(document).ready(function(){
-
+		
 		var totalwitdh1 = $('.image1').width();
 		var imagewidth1 = $('.image1 .red-image>img').width()+$('.image1 .red-image .red-arrow>img').width();
 		var textwidth1 = totalwitdh1 - imagewidth1;
 		$('.image1 span').css('width',textwidth1-50);
-
+		
 		var totalwitdh2 = $('.image2').width();
 		var imagewidth2 = $('.image2 .red-image>img').width()+$('.image2 .red-image .red-arrow>img').width();
 		var textwidth2 = totalwitdh2 - imagewidth2;
 		$('.image2 span').css('width',textwidth2-50);
-
+		
 		var totalwitdh3 = $('.image3').width();
 		var imagewidth3 = $('.image3 .red-image>img').width()+$('.image3 .red-image .red-arrow>img').width();
 		var textwidth3 = totalwitdh3 - imagewidth3;
 		$('.image3 span').css('width',textwidth3-25);
-
+		
 	});
 	$(window).resize(function(){
 	var totalwitdh1 = $('.image1').width();
 		var imagewidth1 = $('.image1 .red-image>img').width()+$('.image1 .red-image .red-arrow>img').width();
 		var textwidth1 = totalwitdh1 - imagewidth1;
 		$('.image1 span').css('width',textwidth1-50);
-
+		
 		var totalwitdh2 = $('.image2').width();
 		var imagewidth2 = $('.image2 .red-image>img').width()+$('.image2 .red-image .red-arrow>img').width();
 		var textwidth2 = totalwitdh2 - imagewidth2;
 		$('.image2 span').css('width',textwidth2-50);
-
+		
 		var totalwitdh3 = $('.image3').width();
 		var imagewidth3 = $('.image3 .red-image>img').width()+$('.image3 .red-image .red-arrow>img').width();
 		var textwidth3 = totalwitdh3 - imagewidth3;
 		$('.image3 span').css('width',textwidth3-25);
-
+		
 
 	});
 	</script>
@@ -448,6 +492,29 @@ $(document).ready(function(){
 		pageTracker._trackPageview();
 		} catch(err) {}
 	</script>
-
+	
+	
+<!-- New CSS&JS@25th_May_2018 (Cookiee Popup)-->	
+		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />	
+		<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+		<script>
+			window.addEventListener("load", function(){
+			window.cookieconsent.initialise({
+			  "palette": {
+				"popup": {
+				  "background": "#eb6c44",
+				  "text": "#ffffff"
+				},
+				"button": {
+				  "background": "#f5d948"
+				}
+			  },
+			  "position": "top",
+			  "static": true
+			})});
+		</script>
+		<!-- New CSS&JS@25th_May_2018 (Cookiee Popup)-->
+				
+	
 </body>
 </html>

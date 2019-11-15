@@ -17,7 +17,7 @@ import java.util.List;
 
 public class StillTastyHttpClient extends StillTastyClient {
     private HttpClient client;
-    private String baseUrl = "http://stilltasty.com";
+    private String baseUrl = "https://www.stilltasty.com/";
 
     public StillTastyHttpClient(HttpClient client) {
         this.client = client;
