@@ -23,8 +23,8 @@ public class SearchResultsParserTest {
     public void testItReturnsListOfResults() throws Exception {
         final String resultsHtml = fixture("search_single_category.html");
         final List<SearchResult> expected = Arrays.asList(
-                new SearchResult("Watermelon - Fresh, Raw, Cut Up", "http://stilltasty.com/fooditems/index/18665"),
-                new SearchResult("Watermelon - Fresh, Raw, Whole", "http://stilltasty.com/fooditems/index/18666"));
+                new SearchResult("Watermelon - Fresh, Raw, Cut Up", "https://www.stilltasty.com/fooditems/index/18665"),
+                new SearchResult("Watermelon - Fresh, Raw, Whole", "https://www.stilltasty.com/fooditems/index/18666"));
 
         assertThat(PARSER.parse(resultsHtml)).isEqualTo(expected);
     }
@@ -35,8 +35,8 @@ public class SearchResultsParserTest {
         final List<SearchResult> results = PARSER.parse(resultsHtml);
 
         assertThat(results).contains(
-                new SearchResult("Steak Sauce, Commercially Bottled - Opened", "http://stilltasty.com/fooditems/index/18405"),
-                new SearchResult("Shark Steak — Fresh, Cooked", "http://stilltasty.com/fooditems/index/18305"),
-                new SearchResult("Bison Steak - Fresh, Raw", "http://stilltasty.com/fooditems/index/16531"));
+                new SearchResult("Steak Sauce, Commercially Bottled - Opened", "https://www.stilltasty.com/fooditems/index/18405"),
+                new SearchResult("Shark Steak — Fresh, Cooked", "https://www.stilltasty.com/fooditems/index/18305"),
+                new SearchResult("Shark Steak - Fresh, Raw", "https://www.stilltasty.com/fooditems/index/18306"));
     }
 }
