@@ -16,3 +16,6 @@ redis:
 
 httpClient:
   userAgent: Foodie (Apache HttpClient)
+  timeout: 10s
+  connectionTimeout: 500ms
+  connectionRequestTimeout: 500ms
