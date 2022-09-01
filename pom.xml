@@ -14,7 +14,7 @@
         <maven.shade.version>2.4.2</maven.shade.version>
         <dropwizard.version>0.9.1</dropwizard.version>
         <dropwizard.template.config.version>1.1.0</dropwizard.template.config.version>
-        <jsoup.version>1.12.1</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
         <jedis.version>2.7.2</jedis.version>
         <junit.version>4.12</junit.version>
         <assertj.version>3.2.0</assertj.version>
